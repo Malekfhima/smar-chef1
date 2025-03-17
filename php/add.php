@@ -16,7 +16,7 @@ if (!isset($_POST['recipe-name'], $_POST['recipe-ingredients'], $_POST['recipe-p
 $recipe_name = $_POST['recipe-name'];
 $recipe_ingredients = $_POST['recipe-ingredients'];
 $recipe_preparation = $_POST['recipe-preparation'];
-$target_dir = "uploads/";
+$target_dir = "../images/";
 $target_file = $target_dir . basename($_FILES["recipe-image"]["name"]);
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 if (!is_dir($target_dir)) {
