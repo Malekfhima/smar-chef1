@@ -9,14 +9,25 @@ if (!isset($_SESSION['id'])) {
     exit();
 }
 $user_id = $_SESSION['id'];
-if (!isset($_POST['recipe-name'], $_POST['recipe-ingredients'], $_POST['recipe-preparation'], $_FILES['recipe-image'])) {
+if (!isset(
+    $_POST['recipe-name'],
+    $_POST['recipe-ingredients'],
+    $_POST['recipe-preparation'],
+    $_POST['preparation-time'],
+    $_POST['cooking-time'],
+    $_POST['servings'],
+    $_FILES['recipe-image']
+)) {
     echo "<script>alert('Erreur : Tous les champs du formulaire doivent être remplis.'); window.history.back();</script>";
     exit();
 }
 $recipe_name = $_POST['recipe-name'];
 $recipe_ingredients = $_POST['recipe-ingredients'];
 $recipe_preparation = $_POST['recipe-preparation'];
-$target_dir = "../images/";
+$preparation_time = intval($_POST['preparation-time']);
+$cooking_time = intval($_POST['cooking-time']);
+$servings = intval($_POST['servings']);
+$target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["recipe-image"]["name"]);
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 if (!is_dir($target_dir)) {
@@ -44,14 +55,13 @@ if ($_FILES["recipe-image"]["size"] > 5 * 1024 * 1024) {
     exit();
 }
 if (move_uploaded_file($_FILES["recipe-image"]["tmp_name"], $target_file)) {
-    $stmt = $cnx->prepare("INSERT INTO recetts (name, ingredients, preparation, image_path, user_id) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $cnx->prepare("INSERT INTO recetts (name, ingredients, preparation, preparation_time, cooking_time, servings, image_path, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
     if (!$stmt) {
         echo "<script>alert('Erreur de préparation de la requête : " . $cnx->error . "'); window.history.back();</script>";
         exit();
     }
-    $stmt->bind_param("ssssi", $recipe_name, $recipe_ingredients, $recipe_preparation, $target_file, $user_id);
+    $stmt->bind_param("sssiiiss", $recipe_name, $recipe_ingredients, $recipe_preparation, $preparation_time, $cooking_time, $servings, $target_file, $user_id);
     if ($stmt->execute()) {
-        sleep(1);
         echo "<script>alert('Recette ajoutée avec succès !'); window.location.href = '../main.php';</script>";
     } else {
         echo "<script>alert('Erreur lors de l\\'ajout de la recette : " . $stmt->error . "'); window.history.back();</script>";

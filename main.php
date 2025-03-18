@@ -18,7 +18,6 @@
             </ul>
         </nav>
     </header>
-
     <section id="home">
         <?php
             session_start();
@@ -26,26 +25,31 @@
         ?> 
         <p>Ready to find some amazing recipes? Start by entering your ingredients!</p>
     </section>
-
     <section id="recipes">
         <h2>Rechercher des recettes</h2>
         <form action="afficher.php" method="POST">
             <label for="ingredients">Enter Recettes:</label>
-            <input type="text" id="ingredients" name="ingredients" placeholder="Recette" required>
+            <input type="text" id="ingredients" name="nom" placeholder="Recette" required>
             <button type="submit" class="btn">Chercher</button>
         </form>
         <h3>Add Your Recipe</h3>
         <form action="php/add.php" method="POST" enctype="multipart/form-data">
-            <label for="recipe-name">Recipe Name:</label>
-            <input type="text" id="recipe-name" name="recipe-name" required>
-            <label for="recipe-ingredients">Ingredients:</label>
-            <textarea id="recipe-ingredients" name="recipe-ingredients" required></textarea>
-            <label for="recipe-preparation">Préparation:</label>
-            <textarea name="recipe-preparation" id="recipe-preparation"></textarea>
-            <label for="recipe-image">Upload an Image:</label>
-            <input type="file" id="recipe-image" name="recipe-image" accept="image/*" required>
-            <button type="submit" class="btn">Add Recipe</button>
-        </form>
+    <label for="recipe-name">Nom de la recette :</label>
+    <input type="text" id="recipe-name" name="recipe-name" required>
+    <label for="recipe-ingredients">Ingrédients :</label>
+    <textarea id="recipe-ingredients" name="recipe-ingredients" required></textarea>
+    <label for="recipe-preparation">Préparation :</label>
+    <textarea id="recipe-preparation" name="recipe-preparation" required></textarea>
+    <label for="preparation-time">Temps de préparation (en minutes) :</label>
+    <input type="number" id="preparation-time" name="preparation-time" required>
+    <label for="cooking-time">Temps de cuisson (en minutes) :</label>
+    <input type="number" id="cooking-time" name="cooking-time" required>
+    <label for="servings">Nombre de portions :</label>
+    <input type="number" id="servings" name="servings" required>
+    <label for="recipe-image">Uploader une image :</label>
+    <input type="file" id="recipe-image" name="recipe-image" accept="image/*" required>
+    <button type="submit" class="btn">Ajouter la recette</button>
+</form>
     </section>
 
     <footer>
