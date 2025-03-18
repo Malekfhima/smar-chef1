@@ -28,11 +28,11 @@
     </section>
 
     <section id="recipes">
-        <h2>Find Recipes</h2>
-        <form action="#" method="POST">
-            <label for="ingredients">Enter Ingredients:</label>
-            <input type="text" id="ingredients" name="ingredients" placeholder="e.g., chicken, rice, tomato" required>
-            <button type="submit" class="btn">Find Recipes</button>
+        <h2>Rechercher des recettes</h2>
+        <form action="afficher.php" method="POST">
+            <label for="ingredients">Enter Recettes:</label>
+            <input type="text" id="ingredients" name="ingredients" placeholder="Recette" required>
+            <button type="submit" class="btn">Chercher</button>
         </form>
         <h3>Add Your Recipe</h3>
         <form action="php/add.php" method="POST" enctype="multipart/form-data">
