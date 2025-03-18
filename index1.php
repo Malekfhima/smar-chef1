@@ -21,11 +21,11 @@
 
     <section class="section1">
         <div class="pages">
-            <a href="./pages/recettesSalées/pizzaPoulet.html"><img src="./images/salé/pizza poulet.jpeg" alt="photo d'une pizza au poulet"></a>
+            <a href="#"><img src="./images/salé/pizza poulet.jpeg" alt="photo d'une pizza au poulet"></a>
             <h3>Côté salé</h3>
         </div>
         <div class="pages">
-            <a href="./pages/recettesSucrées/crepe.html"><img src="./images/sucré/crepes.jpg" alt="photo de crêpes sucrées"></a>
+            <a href="#"><img src="./images/sucré/crepes.jpg" alt="photo de crêpes sucrées"></a>
             <h3>Côté sucré</h3>
         </div>
         <div class="pages">
