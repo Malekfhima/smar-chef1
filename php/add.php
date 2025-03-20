@@ -9,7 +9,8 @@ if (!isset($_SESSION['id'])) {
     exit();
 }
 $user_id = $_SESSION['id'];
-if (!isset(
+if (
+    !isset(
     $_POST['recipe-name'],
     $_POST['recipe-ingredients'],
     $_POST['recipe-preparation'],
@@ -17,7 +18,8 @@ if (!isset(
     $_POST['cooking-time'],
     $_POST['servings'],
     $_FILES['recipe-image']
-)) {
+)
+) {
     echo "<script>alert('Erreur : Tous les champs du formulaire doivent être remplis.'); window.history.back();</script>";
     exit();
 }
