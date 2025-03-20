@@ -8,7 +8,7 @@ include("php/cnx.php");
 $query = "SELECT name, ingredients, preparation, image_path, preparation_time, cooking_time, servings FROM recetts";
 $result = $cnx->query($query);
 if ($result->num_rows === 0) {
-    echo "<p>Aucune recette trouvée.</p>";
+    echo "<script>alert('La liste des recettes est vide.');</script>;";
     exit();
 }
 $cnx->close();
