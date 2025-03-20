@@ -14,7 +14,7 @@ if($nb> 0){
     <script>alert('Connexion réussie !!!');</script>
     ";
     sleep(1);
-    header("Location: ../index1.php");
+    header("Location: ../main.php");
 }elseif($nb==0){
     echo"
     <script>alert('Nom dutilisateur ou mot de passe incorrect !!!');</script>
