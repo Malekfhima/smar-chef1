@@ -7,9 +7,7 @@
     <title>SmartChef - Inscription</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 </head>
-
 <body>
     <header>
         <nav>
@@ -47,6 +45,7 @@
         <p>&copy; 2025 SmartChef. Tous droits réservés.</p>
     </footer>
     <script src="js/afficher_pass.js"></script>
+    <script src="js/cree_compte.js"></script>
 </body>
 
 </html>

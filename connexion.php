@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SmartChef - Inscription</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 </head>
 
 <body>
@@ -44,6 +42,7 @@
         <p>&copy; 2025 SmartChef. Tous droits réservés.</p>
     </footer>
     <script src="js/afficher_pass.js"></script>
+    <script src="js/connexion.js"></script>
 </body>
 
 </html>
