@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SmartChef - Find Recipes</title>
     <link rel="stylesheet" href="css/style_f_r.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -57,6 +58,49 @@
     <footer>
         <p>&copy; 2025 SmartChef. All rights reserved.</p>
     </footer>
+    <script>
+document.querySelector('form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    
+    try {
+        const response = await fetch('php/add.php', {
+            method: 'POST',
+            body: formData
+        });
+        
+        const result = await response.json();
+        
+        if (result.status === 'success') {
+            Swal.fire({
+                title: result.title,
+                text: result.message,
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                if (result.redirect) {
+                    window.location.href = result.redirect;
+                }
+            });
+        } else {
+            Swal.fire({
+                title: result.title,
+                text: result.message,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
+    } catch (error) {
+        Swal.fire({
+            title: 'Erreur',
+            text: 'Une erreur inattendue est survenue',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    }
+});
+</script>
 </body>
 
 </html>
