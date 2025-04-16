@@ -59,7 +59,7 @@
         <p>&copy; 2025 SmartChef. All rights reserved.</p>
     </footer>
     <script>
-document.querySelector('form').addEventListener('submit', async function(e) {
+/*document.querySelector('form').addEventListener('submit', async function(e) {
     e.preventDefault();
     
     const formData = new FormData(this);
@@ -99,7 +99,7 @@ document.querySelector('form').addEventListener('submit', async function(e) {
             confirmButtonText: 'OK'
         });
     }
-});
+});*/
 </script>
 </body>
 
