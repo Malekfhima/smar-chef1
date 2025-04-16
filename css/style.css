@@ -12,14 +12,14 @@
 /* Styles généraux */
 body {
     font-family: 'Advent Pro', sans-serif;
-    background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
+    background-image: linear-gradient(to top, #FAB800 100%, #FAB800 100%);
     color: #333;
     line-height: 1.6;
 }
 
 /* En-tête */
 header {
-    background-color: #7044FD;
+    background-color: #005C9C;
     padding: 1rem 0;
     text-align: center;
 }
@@ -52,7 +52,7 @@ header nav ul li a:hover {
 #home h1 {
     font-family: 'Dancing Script', cursive;
     font-size: 3rem;
-    color: #7044FD;
+    color: #005C9C;
     margin-bottom: 1rem;
 }
 
@@ -75,7 +75,7 @@ header nav ul li a:hover {
 #signup h2 {
     font-family: 'Dancing Script', cursive;
     font-size: 2.5rem;
-    color: #7044FD;
+    color: #005C9C;
     margin-bottom: 1.5rem;
 }
 
@@ -104,13 +104,13 @@ header nav ul li a:hover {
 #signup input[type="text"]:focus,
 #signup input[type="email"]:focus,
 #signup input[type="password"]:focus {
-    border-color: #7044FD;
+    border-color: #005C9C;
     outline: none;
 }
 
 #signup input[type="submit"] {
     padding: 0.75rem;
-    background-color: #7044FD;
+    background-color: #005C9C;
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -126,7 +126,7 @@ header nav ul li a:hover {
 
 /* Pied de page */
 footer {
-    background-color: #7044FD;
+    background-color: #005C9C;
     color: #fff;
     text-align: center;
     padding: 1rem 0;
