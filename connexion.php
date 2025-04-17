@@ -10,13 +10,7 @@
 
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <?php include 'nav.php'; ?>
     </header>
     <section id="home">
         <h1>Bienvenue chez SmartChef</h1>
@@ -32,7 +26,7 @@
                     <input type="checkbox" id="show-password" onclick="affiche_pass()">Afficher Mot de passe
                 </label>
                 <label>
-                    <a href="index.php">Pas de compte?</a>
+                    <a href="home.php">Pas de compte?</a>
                 </label>
             </div>
             <input type="submit" value="Connexion" class="btn">
