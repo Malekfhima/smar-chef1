@@ -15,6 +15,7 @@ $user_id = $_SESSION['id'];
 // Vérification des champs requis
 if (!isset(
     $_POST['recipe-name'],
+    $_POST['recipe-category'], // Champ catégorie du formulaire
     $_POST['recipe-ingredients'],
     $_POST['recipe-preparation'],
     $_POST['preparation-time'],
@@ -27,6 +28,7 @@ if (!isset(
 }
 
 $recipe_name = $_POST['recipe-name'];
+$recipe_cat = $_POST['recipe-category']; // Renommé pour correspondre à la base
 $recipe_ingredients = $_POST['recipe-ingredients'];
 $recipe_preparation = $_POST['recipe-preparation'];
 $preparation_time = intval($_POST['preparation-time']);
@@ -46,7 +48,7 @@ if ($check_stmt->num_rows > 0) {
 }
 $check_stmt->close();
 
-// Traitement de l'image
+// Traitement de l'image (inchangé)
 $target_dir = "uploads/";
 $unique_filename = uniqid() . '_' . basename($_FILES["recipe-image"]["name"]);
 $target_file = $target_dir . $unique_filename;
@@ -82,13 +84,14 @@ if ($_FILES["recipe-image"]["size"] > 5 * 1024 * 1024) {
 }
 
 if (move_uploaded_file($_FILES["recipe-image"]["tmp_name"], $target_file)) {
-    $stmt = $cnx->prepare("INSERT INTO recetts (name, ingredients, preparation, preparation_time, cooking_time, servings, image_path, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    // Modification pour utiliser 'cat' comme nom de colonne
+    $stmt = $cnx->prepare("INSERT INTO recetts (name, cat, ingredients, preparation, preparation_time, cooking_time, servings, image_path, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
     if (!$stmt) {
         echo "<script>alert('Erreur de préparation de la requête : " . $cnx->error . "'); window.history.back();</script>";
         exit();
     }
     
-    $stmt->bind_param("sssiiiss", $recipe_name, $recipe_ingredients, $recipe_preparation, $preparation_time, $cooking_time, $servings, $target_file, $user_id);
+    $stmt->bind_param("ssssiiiss", $recipe_name, $recipe_cat, $recipe_ingredients, $recipe_preparation, $preparation_time, $cooking_time, $servings, $target_file, $user_id);
     
     if ($stmt->execute()) {
         echo "<script>alert('Recette ajoutée avec succès !'); window.location.href = '../main.php';</script>";

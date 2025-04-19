@@ -276,3 +276,49 @@ footer p {
 .forget label input[type="checkbox"] {
     margin-right: 6px;
 }
+/* Style pour la liste déroulante des catégories */
+#recipe-category {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Advent Pro', sans-serif;
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: white;
+    color: #333;
+    transition: all 0.3s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230258A5'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.2rem;
+}
+
+#recipe-category:focus {
+    border-color: #0258A5;
+    box-shadow: 0 0 0 2px rgba(2, 88, 165, 0.2);
+    outline: none;
+}
+
+#recipe-category option {
+    padding: 0.5rem;
+    font-family: 'Advent Pro', sans-serif;
+}
+
+/* Style pour le conteneur de la liste déroulante */
+.select-container {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.select-container::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
