@@ -22,7 +22,7 @@
         ?>
     <section class="section1">
         <div class="pages">
-            <a href="#"><img src="img/cote sale.jpg" alt="photo d'une pizza au poulet"></a>
+            <a href="cat.php"><img src="img/cote sale.jpg" alt="photo d'une pizza au poulet"></a>
             <h3>Côté salé</h3>
         </div>
         <div class="pages">

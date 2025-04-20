@@ -6,5 +6,6 @@
         <li><a href="about.php">À propos</a></li>
         <li><a href="contact.php">Contact</a></li>
         <li><a href="index1.php">index1.php</a></li>
+        <li><a href="cat.php">azerty</a></li>
     </ul>
 </nav>
