@@ -1,0 +1,438 @@
+@import url('https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;600&family=Dancing+Script:wght@400;700&display=swap');
+
+:root{
+    --primary-color:;
+    --secondary-color:;
+    
+}
+/* Réinitialisation des styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+/* Styles généraux */
+body {
+    font-family: 'Advent Pro', sans-serif;
+    background-color: #FFF9F2;
+    color: #5A3921;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* En-tête */
+header {
+    background-color: #FFF;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #FF6B00;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.logo {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: #FF6B00;
+    font-weight: 700;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #5A3921;
+}
+
+header nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+header nav ul li a {
+    color: #5A3921;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+header nav ul li a:hover {
+    color: #FF6B00;
+    background-color: #FFF1E6;
+}
+
+/* Section Hero */
+.hero {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.hero h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4.5rem;
+    color: #FFF;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    font-size: 1.5rem;
+    color: #FFF;
+    max-width: 800px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* Sections */
+.section {
+    background: #FFF;
+    padding: 4rem 0;
+    margin: 2rem auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(90, 57, 33, 0.1);
+}
+
+.section h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: #FF6B00;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 3px;
+    background-color: #FFB800;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Contenu À propos */
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    color: #5A3921;
+    line-height: 1.8;
+}
+
+.about-image {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(90, 57, 33, 0.2);
+    border: 5px solid #FFF;
+    outline: 2px solid #FFB800;
+}
+
+/* Section Équipe */
+.team-section {
+    background-color: #FFF5EB;
+}
+
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.team-member {
+    background: #FFF;
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(90, 57, 33, 0.1);
+    transition: all 0.3s ease;
+    width: 300px;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255, 107, 0, 0.2);
+}
+
+.team-member img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    border: 5px solid #FFB800;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.team-member h3 {
+    color: #FF6B00;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    font-family: 'Dancing Script', cursive;
+}
+
+.team-member p {
+    color: #8C6A56;
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+/* Section Valeurs Culinaires */
+.values-section {
+    background-color: #FFF9F2;
+    border-top: 3px dashed #FFB800;
+    border-bottom: 3px dashed #FFB800;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.value-card {
+    background: #FFF;
+    padding: 2.5rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 107, 0, 0.1);
+    border: 2px solid #FFE4CC;
+}
+
+.value-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255, 107, 0, 0.2);
+    border-color: #FFB800;
+}
+
+.value-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    color: #FF6B00;
+}
+
+.value-card h3 {
+    color: #FF6B00;
+    margin-bottom: 1.5rem;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+}
+
+.value-card p {
+    color: #8C6A56;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* Pied de page */
+footer {
+    background-color: #5A3921;
+    color: #FFF;
+    padding: 4rem 0 2rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-column h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #FFB800;
+}
+
+.footer-column p, .footer-column li {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: #E0D5CC;
+}
+
+.footer-column a {
+    color: #FFB800;
+    transition: color 0.3s ease;
+    font-weight: 600;
+}
+
+.footer-column a:hover {
+    color: #FF6B00;
+    text-decoration: underline;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #8C6A56;
+    font-size: 0.9rem;
+    color: #C4B6A8;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+    
+    .section h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+    
+    header nav ul {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: #FFF;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        transition: left 0.3s ease;
+        z-index: 99;
+    }
+    
+    header nav ul.active {
+        left: 0;
+    }
+    
+    .hamburger.active i::before {
+        content: '\f00d';
+    }
+    
+    .hero {
+        padding: 4rem 2rem;
+    }
+    
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+    
+    .hero p {
+        font-size: 1.2rem;
+    }
+    
+    .section h2 {
+        font-size: 2.2rem;
+    }
+    
+    .about-content {
+        flex-direction: column;
+    }
+    
+    .team-member {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .section {
+        padding: 3rem 0;
+    }
+    
+    .section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .value-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero, .section {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Effet spécial pour les cartes */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.value-card:hover {
+    animation: pulse 1.5s infinite;
+}
