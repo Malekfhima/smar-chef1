@@ -120,7 +120,6 @@ header nav ul li a:hover {
 }
 
 #signup input[type="submit"]:hover {
-    background-color: #0258A5;
     transform: scale(1.05);
 }
 
@@ -204,7 +203,6 @@ header nav ul li a:hover {
 }
 
 #recipes button[type="submit"]:hover {
-    background-color: #5a36cc;
     transform: scale(1.05);
 }
 
