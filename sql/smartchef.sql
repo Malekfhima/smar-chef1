@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2025 at 02:15 PM
+-- Generation Time: Apr 26, 2025 at 03:08 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -37,16 +37,16 @@ CREATE TABLE `recetts` (
   `servings` int(11) NOT NULL,
   `image_path` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `cat` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `recetts`
 --
 
-INSERT INTO `recetts` (`id`, `name`, `ingredients`, `preparation`, `preparation_time`, `cooking_time`, `servings`, `image_path`, `user_id`, `created_at`) VALUES
-(5, 'fa9ous', '1kg fa9ous', 'tlifha bi sac w thotha fi tizik ', 25, 1, 1, 'uploads/67ff76fa06f14_Capture d\'écran 2025-04-02 002724.png', 2, '2025-04-16 09:23:06'),
-(7, 'makarouna', 'djej\r\nbsal\r\nmii\r\n', 'fgkklfgikfd:;llimbkj;', 22, 2, 4, 'uploads/67ff85979f735_Capture d\'écran 2025-04-11 104221.png', 2, '2025-04-16 10:25:27');
+INSERT INTO `recetts` (`id`, `name`, `ingredients`, `preparation`, `preparation_time`, `cooking_time`, `servings`, `image_path`, `user_id`, `created_at`, `cat`) VALUES
+(8, 'Pâtes Carbonara', '200 g de pâtes (spaghetti de préférence)\r\n\r\n100 g de pancetta ou de lardons fumés\r\n\r\n2 gros œufs (ou 3 jaunes d\'œuf pour une texture plus onctueuse)\r\n\r\n40 g de parmesan râpé (et un peu plus pour servir)\r\n\r\n1 gousse d’ail (facultatif)\r\n\r\nPoivre noir fraîchement moulu\r\n\r\nSel', 'Faire cuire les pâtes :\r\n\r\nDans une grande casserole, porter de l’eau salée à ébullition.\r\n\r\nAjouter les pâtes et les cuire al dente (environ 1 minute de moins que le temps indiqué sur le paquet).\r\n\r\nPréparer la sauce :\r\n\r\nDans un bol, battre les œufs avec le parmesan râpé et une bonne pincée de poivre.\r\n\r\nCuire les lardons :\r\n\r\nDans une poêle à feu moyen, faire revenir les lardons (et l’ail écrasé si utilisé) jusqu’à ce qu’ils soient croustillants. Retirer l’ail.\r\n\r\nÉteindre le feu et laisser tiédir 1 minute.\r\n\r\nMonter la carbonara :\r\n\r\nÉgoutter les pâtes en gardant un peu d’eau de cuisson.\r\n\r\nAjouter les pâtes dans la poêle avec les lardons.\r\n\r\nHors du feu, verser la préparation aux œufs en mélangeant rapidement pour créer une sauce crémeuse (ajouter un peu d’eau de cuisson si nécessaire).', 30, 10, 9, 'uploads/680cda63ed1da_#carbonara #pates.jpeg', 2, '2025-04-26 13:06:43', 'Salé');
 
 -- --------------------------------------------------------
 
@@ -95,7 +95,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `recetts`
 --
 ALTER TABLE `recetts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`
