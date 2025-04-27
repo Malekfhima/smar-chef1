@@ -78,6 +78,9 @@ if (!$recipe) {
     </style>
 </head>
 <body>
+    <header>
+        <?php include 'nav.php'; ?>
+    </header>
     <div class="container">
         <a href="index1.php?category=<?= urlencode($recipe['cat']) ?>" class="back-link">← Retour aux recettes <?= htmlspecialchars($recipe['cat']) ?></a>
         

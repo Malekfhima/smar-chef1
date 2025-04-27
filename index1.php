@@ -42,25 +42,25 @@
     <section class="section2">
         <div class="position">
             <div class="bordure">
-                <div><a href="./pages/recettesSucrées/gateaux/fondant.html"><img
+                <div><a href="fondant_au_chocolat.html"><img
                             src="img/fondant.jpg" alt="#"></a></div>
                 <h3>Fondant au chocolat</h3>
             </div>
             <div class="bordure">
-                <div><a href="./pages/recettesSucrées/cookies.html"><img src="img/cookies.jpg" alt="#"></a>
+                <div><a href="cookies.html"><img src="img/cookies.jpg" alt="#"></a>
                 </div>
                 <h3>Cookies aux pépites de chocolat</h3>
             </div>
         </div>
         <div class="position">
             <div class="bordure">
-                <a href="./pages/recettesSucrées/cremes/cremeDessert.html"><img src="img/cremes.jpg"
+                <a href="cremes.html"><img src="img/cremes.jpg"
                         alt="#"></a>
                 <h3>Crèmes dessert au chocolat</h3>
             </div>
 
             <div class="bordure">
-                <a href="./pages/recettesSucrées/brioche.html"><img src="img/brioche.jpg" alt="#"></a>
+                <a href="brioche.html"><img src="img/brioche.jpg" alt="#"></a>
                 <h3>Brioche</h3>
             </div>
         </div>

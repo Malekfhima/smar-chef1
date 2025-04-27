@@ -80,7 +80,6 @@ try {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recettes contenant <?php echo htmlspecialchars($ingredient); ?></title>
-    <link rel="stylesheet" href="../css/afficher.css">
     <link rel="stylesheet" href="../css/style_f_r.css">
     <script src="https://kit.fontawesome.com/0b6d538c32.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
