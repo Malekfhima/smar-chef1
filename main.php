@@ -35,10 +35,10 @@
     <label for="recipe-category">Catégorie :</label>
     <select id="recipe-category" name="recipe-category" required>
         <option value="">-- Choisir une catégorie --</option>
-        <option value="Salé">Salé</option>
-        <option value="Sucré">Sucré</option>
-        <option value="Les salades">Salades</option>
-        <option value="Les gratins">Gratins</option>
+        <option value="salé">Salé</option>
+        <option value="sucré">Sucré</option>
+        <option value="les salades">Salades</option>
+        <option value="les gratins">Gratins</option>
     </select>
     
     <label for="recipe-ingredients">Ingrédients :</label>

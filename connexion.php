@@ -44,5 +44,4 @@
     <script src="js/afficher_pass.js"></script>
     <script src="js/connexion.js"></script>
 </body>
-
 </html>
