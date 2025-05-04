@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,9 +9,7 @@
     <link rel="stylesheet" href="css/style1.css">
     <link rel="shortcut icon" href="">
 </head>
-
 <body>
-
     <header>
         <?php include 'nav.php'; ?>
     </header>
@@ -22,19 +19,19 @@
         ?>
     <section class="section1">
         <div class="pages">
-            <a href="cat.php"><img src="img/cote sale.jpg" alt="photo d'une pizza au poulet"></a>
+            <a href="recc.php?cat=sale"><img src="img/cote sale.jpg" alt="photo d'une pizza au poulet"></a>
             <h3>Côté salé</h3>
         </div>
         <div class="pages">
-            <a href="#"><img src="img/cote sucre.jpg" alt="photo de crêpes sucrées"></a>
+            <a href="recc.php?cat=sucre"><img src="img/cote sucre.jpg" alt="photo de crêpes sucrées"></a>
             <h3>Côté sucré</h3>
         </div>
         <div class="pages">
-            <a href="#"><img src="img/les salades.jpg" alt="salade de pomme de terres"></a>
+            <a href="recc.php?cat=salades"><img src="img/les salades.jpg" alt="salade de pomme de terres"></a>
             <h3>Les salades</h3>
         </div>
         <div class="pages">
-            <a href="#"><img src="img/les gratins.jpg" alt="#"></a>
+            <a href="recc.php?cat=gratins"><img src="img/les gratins.jpg" alt="#"></a>
             <h3>Les gratins</h3>
         </div>
     </section>

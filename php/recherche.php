@@ -18,7 +18,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 if ($result->num_rows === 0) {
     die("Erreur : Aucune recette trouvée avec ce nom.");
-    header(location: )
+    
 }
 $recipe = $result->fetch_assoc();
 $stmt->close();
