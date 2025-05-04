@@ -1,4 +1,3 @@
-
 <nav class="main-navigation">
     <ul>
         <li><a href="index1.php">Accueil</a></li>
