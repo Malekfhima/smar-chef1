@@ -84,9 +84,13 @@ a:hover {
 
 /* Sections */
 .section1, .section2, .section3 {
-    padding: 2rem;
-    margin: 2rem auto;
-    max-width: 1200px;
+    display: flex;
+    overflow-x: auto; /* Permet le défilement horizontal */
+    flex-wrap: nowrap; /* Empêche le retour à la ligne */
+    gap: 20px; /* Espacement entre les éléments */
+    padding: 2rem 1rem; /* Ajout de padding latéral */
+    scrollbar-width: thin;
+
 }
 
 .section1 {
@@ -177,6 +181,7 @@ footer {
     text-align: center;
     padding: 1.5rem 0;
     margin-top: 2rem;
+    
 }
 
 /* Responsive */
