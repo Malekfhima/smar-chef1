@@ -113,7 +113,7 @@ try {
                 <div class="recipe-header">
                     <h2><?php echo htmlspecialchars($recipe['name']); ?></h2>
                     <img src="<?php echo htmlspecialchars($recipe['image_path']); ?>" 
-                         alt="<?php echo htmlspecialchars($recipe['name']); ?>">
+                         alt="<?php echo htmlspecialchars($recipe['name']); ?>" style="height: 500px;">
                 </div>
                 <div class="recipe-details">
                     <p><strong>Temps de préparation :</strong> <?php echo htmlspecialchars($recipe['preparation_time']); ?> min</p>
