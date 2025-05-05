@@ -62,8 +62,6 @@
             </div>
         </div>
     </section>
-
-    
     </section>
     <footer>
         <p>&copy; 2025 SmartChef. Tous droits réservés.</p>
