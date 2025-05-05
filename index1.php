@@ -63,22 +63,7 @@
         </div>
     </section>
 
-    <h2>SOS en cuisine</h2>
-    <p>Suivez tous mes conseils et astuces pour devenir un pro des fourneaux</p>
-
-    <section class="section3">
-
-        <div class="center bordure2">
-            <a href="./astuces/lien-betteraves/les-betteraves-rouges.html"><img
-                    src="img/bettraves.jpg" alt="cuire les betteraves rouges"></a>
-            <h3>Comment cuire les betteraves rouges?</h3>
-        </div>
-        
-        <div class="center bordure2">
-            <a href="#"><img src="img/carameliser.jpg" alt="caraméliser les oignons"></a>
-            <h3>Comment caraméliser les oignons?</h3>
-        </div>
-
+    
     </section>
     <footer>
         <p>&copy; 2025 SmartChef. Tous droits réservés.</p>
