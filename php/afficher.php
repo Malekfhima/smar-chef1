@@ -83,7 +83,7 @@ try {
     <link rel="stylesheet" href="../css/style_f_r.css">
     <script src="https://kit.fontawesome.com/0b6d538c32.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="shortcut icon" href="../images/logo.png">
+    <link rel="shortcut icon" href="../images/logo.jpg">
     <style>
         .highlight {
             background-color: yellow;
@@ -91,18 +91,16 @@ try {
         }
     </style>
 </head>
-
 <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="../index.php">Home</a></li>
-                <li><a href="#recipes">Recipes</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="logout.php">Logout</a></li>
-            </ul>
-        </nav>
+    <nav class="main-navigation">
+    <ul>
+        <li><a href="../index1.php">Accueil</a></li>
+        <li><a href="../about.html">À propos</a></li>
+        <li><a href="../about.html">Contact</a></li>
+        <li><a href="../main.php">Ajouter des recettes</a></li>
+    </ul>
+</nav>
     </header>
     <section id="home">
         <h1>Recettes contenant "<?php echo htmlspecialchars($ingredient); ?>"</h1>
@@ -116,9 +114,10 @@ try {
                          alt="<?php echo htmlspecialchars($recipe['name']); ?>" style="height: 500px;">
                 </div>
                 <div class="recipe-details">
-                    <p><strong>Temps de préparation :</strong> <?php echo htmlspecialchars($recipe['preparation_time']); ?> min</p>
-                    <p><strong>Temps de cuisson :</strong> <?php echo htmlspecialchars($recipe['cooking_time']); ?> min</p>
-                    <p><strong>Nombre de portions :</strong> <?php echo htmlspecialchars($recipe['servings']); ?> portions</p>
+                    <h3>Details</h3>
+                    <p><strong>Temps de préparation :</strong> <?php echo htmlspecialchars($recipe['preparation_time']); ?> Minutes.</p>
+                    <p><strong>Temps de cuisson :</strong> <?php echo htmlspecialchars($recipe['cooking_time']); ?> Minutes.</p>
+                    <p><strong>Nombre de portions :</strong> <?php echo htmlspecialchars($recipe['servings']); ?> Portions.</p>
                 </div>
                 <div class="recipe-content">
                     <div class="ingredients">

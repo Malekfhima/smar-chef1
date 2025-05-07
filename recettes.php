@@ -23,6 +23,7 @@ echo "</pre>";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+<link rel="shortcut icon" href="images/logo.jpg">
 <head>
     <meta charset="UTF-8">
     <style>

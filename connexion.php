@@ -6,6 +6,7 @@
     <title>SmartChef - Inscription</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="shortcut icon" href="images/logo.jpg">
 </head>
 
 <body>

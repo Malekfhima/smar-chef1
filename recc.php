@@ -26,6 +26,7 @@ if(!$result_item) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style1.css">
     <title>Recettes - <?= htmlspecialchars($_GET['cat']) ?></title>
+    <link rel="shortcut icon" href="images/logo.jpg">
 </head>
 <body>
     <header><?php include "nav.php"; ?></header>

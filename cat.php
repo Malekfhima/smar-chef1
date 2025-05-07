@@ -28,6 +28,7 @@ if (!$recipe) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($recipe['name']) ?></title>
+    <link rel="shortcut icon" href="images/logo.jpg">
     <style>
         body {
             font-family: 'Advent Pro', sans-serif;

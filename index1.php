@@ -7,7 +7,7 @@
     <title>Site de recettes de cuisine</title>
     <script src="https://kit.fontawesome.com/0b6d538c32.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style1.css">
-    <link rel="shortcut icon" href="">
+    <link rel="shortcut icon" href="images/logo.jpg">
 </head>
 <body>
     <header>
