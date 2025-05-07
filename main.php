@@ -9,14 +9,89 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="shortcut icon" href="images/logo.jpg">
 </head>
+<style>
+    .user-info {
+        margin-right: 15px;
+        color: #fff;
+        font-weight: bold;
+    }
+    .main-navigation {
+    background-color: #0258A5;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
+.main-navigation ul {
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.main-navigation li {
+    list-style: none;
+}
+
+.main-navigation a {
+    color: #fff;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.main-navigation a:hover {
+    color: #ffcc00;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.main-navigation a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #ffcc00;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.main-navigation a:hover::after {
+    width: 70%;
+}
+.admin-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.admin-nav span {
+    color: #fff;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 1.1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+}
+</style>
 <body>
     <header>
+    <?php session_start();?>
         <?php include 'nav.php'; ?>
+        <div class="nav-links">
+            
+        </div>
     </header>
     <section id="home">
         <?php
-        session_start();
         echo '<h1>Bienvenue et bon appétit  ' . $_SESSION['nom'] . ' !</h1>';
         ?>
         <p>Prêt à découvrir de délicieuses recettes ? Commencez par saisir vos ingrédients !</p>

@@ -11,10 +11,12 @@
 </head>
 <body>
     <header>
-        <?php include 'nav.php'; ?>
+
+        <?php
+        session_start();
+         include 'nav.php'; ?>
     </header>
     <?php
-        session_start();
         echo '<h1>Bienvenue et bon appétit  ' . $_SESSION['nom'] . ' !</h1>';
         ?>
     <section class="section1">
@@ -39,25 +41,25 @@
     <section class="section2">
         <div class="position">
             <div class="bordure">
-                <div><a href="fondant_au_chocolat.html"><img
+                <div><a href="fondant_au_chocolat.php"><img
                             src="img/fondant.jpg" alt="#"></a></div>
                 <h3>Fondant au chocolat</h3>
             </div>
             <div class="bordure">
-                <div><a href="cookies.html"><img src="img/cookies.jpg" alt="#"></a>
+                <div><a href="cookies.php"><img src="img/cookies.jpg" alt="#"></a>
                 </div>
                 <h3>Cookies aux pépites de chocolat</h3>
             </div>
         </div>
         <div class="position">
             <div class="bordure">
-                <a href="cremes.html"><img src="img/cremes.jpg"
+                <a href="cremes.php"><img src="img/cremes.jpg"
                         alt="#"></a>
                 <h3>Crèmes dessert au chocolat</h3>
             </div>
 
             <div class="bordure">
-                <a href="brioche.html"><img src="img/brioche.jpg" alt="#"></a>
+                <a href="brioche.php"><img src="img/brioche.jpg" alt="#"></a>
                 <h3>Brioche</h3>
             </div>
         </div>

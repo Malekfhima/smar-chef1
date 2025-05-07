@@ -11,13 +11,9 @@
 
 <body>
     <header>
-        <nav class="main-navigation">
-            <ul>
-                <li><a href="index1.php">Accueil</a></li>
-                <li><a href="about.html">À propos</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
+        <?php 
+        include("nav.php");
+        ?>
     </header>
     <section id="home">
         <h1>Bienvenue chez SmartChef</h1>

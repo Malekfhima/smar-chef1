@@ -55,7 +55,9 @@ $notes = $recipe['nb'];
 </head>
 <body>
     <header>
-        <?php include "nav.php"; ?>
+
+        <?php
+         include "nav.php"; ?>
     </header>
 
     <section id="home">

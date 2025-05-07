@@ -11,7 +11,8 @@
 </head>
 <body>
     <header>
-        <?php include 'nav.php'; ?>
+        <?php session_start();
+        include 'nav.php'; ?>
     </header>
     <section id="home">
         <h1>Bienvenue chez SmartChef</h1>

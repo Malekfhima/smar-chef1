@@ -183,6 +183,145 @@ footer {
     margin-top: 2rem;
     
 }
+/* Navigation principale */
+.main-navigation {
+    background-color: #005C9C;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1000;
+}
+
+.main-navigation ul {
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.main-navigation li {
+    list-style: none;
+    position: relative;
+}
+
+.main-navigation a {
+    color: #fff;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.main-navigation a:hover {
+    color: #FAB800;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.main-navigation a i {
+    font-size: 1.1rem;
+}
+
+/* Indicateur actif */
+.main-navigation a.active {
+    color: #FAB800;
+    font-weight: 600;
+}
+
+/* Section admin */
+.admin-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+}
+
+.admin-nav span {
+    color: #fff;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 1.1rem;
+}
+
+.admin-nav .fa-user {
+    color: #FAB800;
+}
+
+/* Menu burger pour mobile */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    color: white;
+    font-size: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    .main-navigation ul {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #005C9C;
+        flex-direction: column;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .main-navigation ul.active {
+        max-height: 500px;
+        padding: 1rem 0;
+    }
+    
+    .main-navigation li {
+        width: 100%;
+    }
+    
+    .main-navigation a {
+        padding: 1rem 2rem;
+        border-radius: 0;
+        justify-content: center;
+    }
+    
+    .admin-nav {
+        margin-top: 1rem;
+        width: 100%;
+        justify-content: center;
+        border-radius: 0;
+    }
+}
+
+/* Animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-navigation a:hover {
+    animation: slideIn 0.3s ease forwards;
+}
 
 /* Responsive */
 @media screen and (max-width: 768px) {
