@@ -37,8 +37,8 @@
         <option value="">-- Choisir une catégorie --</option>
         <option value="salé">Salé</option>
         <option value="sucré">Sucré</option>
-        <option value="les salades">Salades</option>
-        <option value="les gratins">Gratins</option>
+        <option value="salades">Salades</option>
+        <option value="gratins">Gratins</option>
     </select>
     
     <label for="recipe-ingredients">Ingrédients :</label>
@@ -58,6 +58,9 @@
     
     <label for="recipe-image">Uploader une image :</label>
     <input type="file" id="recipe-image" name="recipe-image" accept="image/*" required>
+
+    <label for="Nb">NB*</label>
+    <input type="text" id="Nb" name="nb">
     
     <button type="submit" class="btn">Ajouter la recette</button>
 </form>

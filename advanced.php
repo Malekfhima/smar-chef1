@@ -31,10 +31,10 @@ $image_path = 'php/uploads/' . htmlspecialchars(basename($recipe['image_path']))
 $prep_time = htmlspecialchars($recipe['preparation_time']);
 $cook_time = htmlspecialchars($recipe['cooking_time']);
 $servings = htmlspecialchars($recipe['servings']);
-$ingredients = nl2br(htmlspecialchars($recipe['ingredients']));
-$instructions = nl2br(htmlspecialchars($recipe['preparation']));
+$ingredients = $recipe['ingredients'];
+$instructions = $recipe['preparation'];
+$notes = $recipe['nb'];
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -42,6 +42,15 @@ $instructions = nl2br(htmlspecialchars($recipe['preparation']));
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style_f_r.css">
     <title><?= $title ?></title>
+    <style>
+        .ingredients ol, .preparation ol, .notes ol {
+            padding-left: 2rem;
+        }
+        .ingredients li, .preparation li, .notes li {
+            margin-bottom: 8px;
+            list-style-type: decimal;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -56,29 +65,28 @@ $instructions = nl2br(htmlspecialchars($recipe['preparation']));
         <div class="recipe-card">
             <div class="recipe-header">
                 <img src="<?= $image_path ?>" alt="<?= $title ?>" style="border-radius: 2%;">
-            </div>
-            
+            </div>          
             <div class="recipe-details">
                 <h3>Détails</h3>
-                <p><strong>Temps de préparation :</strong> <?= $prep_time ?></p>
-                <p><strong>Temps de cuisson :</strong> <?= $cook_time ?></p>
-                <p><strong>Portions :</strong> <?= $servings ?></p>
+                <p><strong>Temps de préparation :</strong> <?= $prep_time ?> Minutes.</p>
+                <p><strong>Temps de cuisson :</strong> <?= $cook_time ?> Minutes.</p>
+                <p><strong>Portions :</strong> <?= $servings ?> Portions.</p>
             </div>
 
             <div class="recipe-content">
                 <div class="ingredients">
                     <h3>Ingrédients</h3>
-                    <ul>
+                    <ol>
                         <?php
-                        // Convertir les ingrédients en liste
-                        $ingredients_list = explode("\n", trim($recipe['ingredients']));
+                        // Convertir les ingrédients en liste numérotée
+                        $ingredients_list = preg_split('/\r\n|\r|\n/', trim($ingredients));
                         foreach($ingredients_list as $ingredient) {
                             if(!empty(trim($ingredient))) {
                                 echo '<li>' . htmlspecialchars(trim($ingredient)) . '</li>';
                             }
                         }
                         ?>
-                    </ul>
+                    </ol>
                 </div>
 
                 <div class="preparation">
@@ -86,7 +94,7 @@ $instructions = nl2br(htmlspecialchars($recipe['preparation']));
                     <ol>
                         <?php
                         // Convertir les étapes en liste numérotée
-                        $steps = explode("\n", trim($recipe['preparation']));
+                        $steps = preg_split('/\r\n|\r|\n/', trim($instructions));
                         foreach($steps as $step) {
                             if(!empty(trim($step))) {
                                 echo '<li>' . htmlspecialchars(trim($step)) . '</li>';
@@ -95,10 +103,24 @@ $instructions = nl2br(htmlspecialchars($recipe['preparation']));
                         ?>
                     </ol>
                 </div>
+                <?php if(!empty(trim($notes))) : ?>
+                <div class="notes">
+                    <h3>Note Bien</h3>
+                    <ol>
+                        <?php
+                        $notes_list = preg_split('/\r\n|\r|\n/', trim($notes));
+                        foreach($notes_list as $note) {
+                            if(!empty(trim($note))) {
+                                echo '<li>' . htmlspecialchars(trim($note)) . '</li>';
+                            }
+                        }
+                        ?>
+                    </ol>
+                </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
-
     <footer>
         <?php include "footer.php"; ?>
     </footer>

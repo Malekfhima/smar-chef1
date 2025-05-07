@@ -34,6 +34,7 @@ $recipe_preparation = $_POST['recipe-preparation'];
 $preparation_time = intval($_POST['preparation-time']);
 $cooking_time = intval($_POST['cooking-time']);
 $servings = intval($_POST['servings']);
+$nb=$_POST['nb'];
 
 // Vérification si la recette existe déjà
 $check_stmt = $cnx->prepare("SELECT id FROM recetts WHERE name = ? AND user_id = ?");
@@ -85,13 +86,13 @@ if ($_FILES["recipe-image"]["size"] > 5 * 1024 * 1024) {
 
 if (move_uploaded_file($_FILES["recipe-image"]["tmp_name"], $target_file)) {
     // Modification pour utiliser 'cat' comme nom de colonne
-    $stmt = $cnx->prepare("INSERT INTO recetts (name, cat, ingredients, preparation, preparation_time, cooking_time, servings, image_path, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $cnx->prepare("INSERT INTO recetts (name, cat, ingredients, preparation, preparation_time, cooking_time, servings, image_path, user_id,nb) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)");
     if (!$stmt) {
         echo "<script>alert('Erreur de préparation de la requête : " . $cnx->error . "'); window.history.back();</script>";
         exit();
     }
     
-    $stmt->bind_param("ssssiiiss", $recipe_name, $recipe_cat, $recipe_ingredients, $recipe_preparation, $preparation_time, $cooking_time, $servings, $target_file, $user_id);
+    $stmt->bind_param("ssssiiisss", $recipe_name, $recipe_cat, $recipe_ingredients, $recipe_preparation, $preparation_time, $cooking_time, $servings, $target_file, $user_id,$nb);
     
     if ($stmt->execute()) {
         echo "<script>alert('Recette ajoutée avec succès !'); window.location.href = '../main.php';</script>";
