@@ -18,16 +18,16 @@
         session_start();
         echo '<h1>Bienvenue et bon appétit  ' . $_SESSION['nom'] . ' !</h1>';
         ?>
-        <p>Ready to find some amazing recipes? Start by entering your ingredients!</p>
+        <p>Prêt à découvrir de délicieuses recettes ? Commencez par saisir vos ingrédients !</p>
     </section>
     <section id="recipes">
-        <h2>Rechercher des recettes</h2>
+        <h2>Rechercher Des Recettes</h2>
         <form action="php/afficher.php" method="POST">
     <label for="ingredients">Entrez un ingrédient :</label>
     <input type="text" id="ingredients" name="nom" placeholder="Ingrédient" required>
     <button type="submit" class="btn">Chercher</button>
 </form>
-        <h3>Add Your Recipe</h3>
+        <h3>Ajouter Votre Recette</h3>
         <form action="php/add.php" method="POST" enctype="multipart/form-data">
     <label for="recipe-name">Nom de la recette :</label>
     <input type="text" id="recipe-name" name="recipe-name" required>
