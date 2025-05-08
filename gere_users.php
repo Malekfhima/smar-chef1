@@ -495,7 +495,7 @@ footer p {
                 <div class="form-group">
                     <label for="role">Rôle</label>
                     <select id="role" name="role" required>
-                        <option value="user">Utilisateur</option>
+                        <option value="utilisateur">Utilisateur</option>
                         <option value="admin">Administrateur</option>
                     </select>
                 </div>
