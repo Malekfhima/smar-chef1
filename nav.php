@@ -86,14 +86,14 @@
                     <li><a href="main.php">Ajouter des recettes</a></li>
                     <li><a href="gere_users.php">Gérer les utilisateurs</a></li>
                     <li><a href="afficher_rec.php">Gérer les recettes</a></li>
-                    <li><a href="php/logout.php">de</a></li>
+                    <li><a href="php/logout.php">Deconnexion</a></li>
             <?php endif; ?>
             <?php if(isset(($_SESSION['id'])) && $_SESSION['role']==='utilisateur'):?>
                     <li><a href="index1.php">Accueil</a></li>
                     <li><a href="about.html">À propos</a></li>
                     <li><a href="about.html">Contact</a></li>
                     <li><a href="main.php">Ajouter des recettes</a></li>
-                    <li><a href="php/logout.php">de</a></li>
+                    <li><a href="php/logout.php">Dexonnexion</a></li>
             <?php endif; ?>
             <?php if(isset($_SESSION['id'])==false): ?>
                     <li><a href="index.html">Accueil</a></li>
