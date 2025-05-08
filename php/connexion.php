@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Si échec de connexion
     $_SESSION['error'] = "Identifiants incorrects ou compte inexistant";
-    header("Location: ../main.php");
+    header("Location: ../index1.php");
     exit();
 }
 
