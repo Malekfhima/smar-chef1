@@ -1,24 +1,18 @@
 <?php
 include "php/cnx.php";
 session_start();
-
-// Vérification du paramètre GET
 if(!isset($_GET['cat'])) {
     header("Location: index1.php");
     exit();
 }
-
-// Requête préparée sécurisée
 $stmt = mysqli_prepare($cnx, "SELECT id, name, image_path FROM recetts WHERE cat = ?");
 mysqli_stmt_bind_param($stmt, "s", $_GET['cat']);
 mysqli_stmt_execute($stmt);
 $result_item = mysqli_stmt_get_result($stmt);
-
 if(!$result_item) {
     die("Erreur de requête : " . mysqli_error($cnx));
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +24,6 @@ if(!$result_item) {
 </head>
 <body>
     <header><?php include "nav.php"; ?></header>
-    
     <section class="section2">
         <?php if(mysqli_num_rows($result_item) == 0) : ?>
             <script>
@@ -43,7 +36,6 @@ if(!$result_item) {
                 // Chemins des images
                 $image_file = 'php/uploads/' . basename($row['image_path']);
                 $absolute_path = $_SERVER['DOCUMENT_ROOT'] . '/' . $image_file;
-            
                 ?>
                 <div class="position">
                     <div class="bordure">
@@ -58,7 +50,6 @@ if(!$result_item) {
             <?php endwhile; ?>
         <?php endif; ?>
     </section>
-
     <footer><?php include "footer.php"; ?></footer>
 </body>
 </html>

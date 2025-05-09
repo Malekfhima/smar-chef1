@@ -11,7 +11,6 @@
 </head>
 <body>
     <header>
-
         <?php
         session_start();
          include 'nav.php'; ?>
@@ -37,7 +36,6 @@
             <h3>Les gratins</h3>
         </div>
     </section>
-
     <section class="section2">
         <div class="position">
             <div class="bordure">
@@ -57,7 +55,6 @@
                         alt="#"></a>
                 <h3>Crèmes dessert au chocolat</h3>
             </div>
-
             <div class="bordure">
                 <a href="brioche.php"><img src="img/brioche.jpg" alt="#"></a>
                 <h3>Brioche</h3>
@@ -68,9 +65,6 @@
     <footer>
         <p>&copy; 2025 SmartChef. Tous droits réservés.</p>
     </footer>
-
-
-
 </body>
 
 </html>

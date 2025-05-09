@@ -1,22 +1,14 @@
 <?php
-// recettes.php
 session_start();
 include("php/cnx.php");
-
-// Debug
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-
-// Correction ligne 10 : Vérification et récupération sécurisée
-if (!isset($_SESSION['resultats_recherche'])) { // Clé de session fixe
+if (!isset($_SESSION['resultats_recherche'])) {
     die("Aucune donnée disponible. Retour à <a href='index1.php'>l'accueil</a>.");
 }
-
 $donnees = $_SESSION['resultats_recherche'];
 unset($_SESSION['resultats_recherche']);
-
-// Debug
 echo "<pre>Données session: ";
 print_r($donnees);
 echo "</pre>";
@@ -38,10 +30,7 @@ echo "</pre>";
     </style>
 </head>
 <body>
-
-    <!-- Correction ligne 35 : Structure cohérente -->
     <h1>Catégorie: <?= htmlspecialchars($donnees['categorie'] ?? 'Inconnue') ?></h1>
-    
     <?php if (empty($donnees['recettes'])): ?>
         <p>Aucune recette trouvée</p>
     <?php else: ?>
@@ -64,6 +53,5 @@ echo "</pre>";
             </div>
         <?php endforeach; ?>
     <?php endif; ?>
-
 </body>
 </html>

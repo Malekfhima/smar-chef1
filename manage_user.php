@@ -1,161 +1,104 @@
 <?php
 session_start();
 include("php/cnx.php");
-
-// Vérifier si l'utilisateur est un admin
-if(!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     $_SESSION['message'] = "Accès non autorisé";
-    $_SESSION['message_type'] = 'error';
-    header("Location: ../connexion.php");
+    $_SESSION['message_type'] = "error";
+    header("Location: connexion.php");
     exit();
 }
-
-// Fonction de validation
-function validateInput($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-
-// Récupérer l'action
-$action = isset($_GET['action']) ? $_GET['action'] : (isset($_POST['action']) ? $_POST['action'] : '');
-
-switch($action) {
-    case 'add':
-        // Ajout d'un nouvel utilisateur
-        $username = validateInput($_POST['username']);
-        $email = validateInput($_POST['email']);
-        $password = $_POST['password'];
-        $role = validateInput($_POST['role']);
-        
-        // Validation des données
-        if(empty($username) || empty($email) || empty($password) || empty($role)) {
-            $_SESSION['message'] = "Tous les champs sont obligatoires";
-            $_SESSION['message_type'] = 'error';
-            break;
-        }
-        
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $_SESSION['message'] = "Format d'email invalide";
-            $_SESSION['message_type'] = 'error';
-            break;
-        }
-        
-        // Vérifier si l'utilisateur existe déjà
-        $stmt = $cnx->prepare("SELECT id FROM user WHERE nom = ? OR mail = ?");
-        $stmt->bind_param("ss", $username, $email);
-        $stmt->execute();
-        $stmt->store_result();
-        
-        if($stmt->num_rows > 0) {
-            $_SESSION['message'] = "Nom d'utilisateur ou email déjà utilisé";
-            $_SESSION['message_type'] = 'error';
-            $stmt->close();
-            break;
-        }
-        $stmt->close();
-        
-        // Hachage du mot de passe
-        $hashed_password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
-        
-        // Insertion dans la base de données
-        $stmt = $cnx->prepare("INSERT INTO user (nom, mail, pass, role) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $username, $email, $hashed_password, $role);
-        
-        if($stmt->execute()) {
-            $_SESSION['message'] = "Utilisateur ajouté avec succès";
-            $_SESSION['message_type'] = 'success';
-        } else {
-            $_SESSION['message'] = "Erreur lors de l'ajout de l'utilisateur";
-            $_SESSION['message_type'] = 'error';
-        }
-        $stmt->close();
-        break;
-        
-    case 'edit':
-        // Modification d'un utilisateur existant
-        $user_id = intval($_POST['user_id']);
-        $username = validateInput($_POST['username']);
-        $email = validateInput($_POST['email']);
-        $password = $_POST['password'];
-        $role = validateInput($_POST['role']);
-        
-        // Validation des données
-        if(empty($username) || empty($email) || empty($role)) {
-            $_SESSION['message'] = "Les champs obligatoires sont manquants";
-            $_SESSION['message_type'] = 'error';
-            break;
-        }
-        
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $_SESSION['message'] = "Format d'email invalide";
-            $_SESSION['message_type'] = 'error';
-            break;
-        }
-        
-        // Construction de la requête de mise à jour
-        $query = "UPDATE user SET nom = ?, mail = ?, role = ?";
-        $types = "sss";
-        $params = array($username, $email, $role);
-        
-        // Si un nouveau mot de passe est fourni
-        if(!empty($password)) {
-            $hashed_password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
-            $query .= ", pass = ?";
-            $types .= "s";
-            $params[] = $hashed_password;
-        }
-        
-        $query .= " WHERE id = ?";
-        $types .= "i";
-        $params[] = $user_id;
-        
-        // Préparation et exécution de la requête
-        $stmt = $cnx->prepare($query);
-        $stmt->bind_param($types, ...$params);
-        
-        if($stmt->execute()) {
-            $_SESSION['message'] = "Utilisateur mis à jour avec succès";
-            $_SESSION['message_type'] = 'success';
-        } else {
-            $_SESSION['message'] = "Erreur lors de la mise à jour de l'utilisateur";
-            $_SESSION['message_type'] = 'error';
-        }
-        $stmt->close();
-        break;
-        
-    case 'delete':
-        // Suppression d'un utilisateur
-        $user_id = intval($_GET['id']);
-        
-        // Empêcher l'admin de se supprimer lui-même
-        if($user_id == $_SESSION['id']) {
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['action'])) {
+    if ($_GET['action'] === 'delete' && isset($_GET['id'])) {
+        $id = intval($_GET['id']);
+        if ($id == $_SESSION['id']) {
             $_SESSION['message'] = "Vous ne pouvez pas supprimer votre propre compte";
-            $_SESSION['message_type'] = 'error';
-            break;
+            $_SESSION['message_type'] = "error";
+            header("Location: gere_users.php");
+            exit();
         }
-        
-        $stmt = $cnx->prepare("DELETE FROM user WHERE id = ?");
-        $stmt->bind_param("i", $user_id);
-        
-        if($stmt->execute()) {
-            $_SESSION['message'] = "Utilisateur supprimé avec succès";
-            $_SESSION['message_type'] = 'success';
-        } else {
-            $_SESSION['message'] = "Erreur lors de la suppression de l'utilisateur";
-            $_SESSION['message_type'] = 'error';
+        try {
+            $cnx->begin_transaction();
+            $check = $cnx->prepare("SELECT id FROM user WHERE id = ?");
+            $check->bind_param("i", $id);
+            $check->execute();
+            $check->store_result();
+            if ($check->num_rows === 0) {
+                throw new Exception("Utilisateur introuvable");
+            }
+            $check->close();
+            $delete_recettes = $cnx->prepare("DELETE FROM recetts WHERE user_id = ?");
+            if (!$delete_recettes) throw new Exception("Erreur préparation recettes : " . $cnx->error);
+            $delete_recettes->bind_param("i", $id);
+            $delete_recettes->execute();
+            $delete_recettes->close();
+            $delete_user = $cnx->prepare("DELETE FROM user WHERE id = ?");
+            if (!$delete_user) throw new Exception("Erreur préparation user : " . $cnx->error);
+            $delete_user->bind_param("i", $id);
+            $delete_user->execute();
+            $cnx->commit();
+            $_SESSION['message'] = "Utilisateur et données supprimés avec succès";
+            $_SESSION['message_type'] = "success";
+        } catch (Exception $e) {
+            $cnx->rollback();
+            $_SESSION['message'] = "Erreur : " . $e->getMessage();
+            $_SESSION['message_type'] = "error";
         }
-        $stmt->close();
-        break;
-        
-    default:
-        $_SESSION['message'] = "Action non reconnue";
-        $_SESSION['message_type'] = 'error';
-        break;
+        header("Location: gere_users.php");
+        exit();
+    }
 }
-
-// Redirection vers la page admin
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
+    $action = $_POST['action'];
+    $username = trim($_POST['username']);
+    $email = trim($_POST['email']);
+    $role = $_POST['role'];
+    $errors = [];
+    if (empty($username)) $errors[] = "Le nom est obligatoire";
+    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Email invalide";
+    if (!in_array($role, ['admin', 'utilisateur'])) $errors[] = "Rôle invalide";
+    if ($action === 'add' && (empty($_POST['password']) || strlen($_POST['password']) < 6)) {
+        $errors[] = "Le mot de passe doit contenir au moins 6 caractères";
+    }
+    if (!empty($errors)) {
+        $_SESSION['message'] = implode("<br>", $errors);
+        $_SESSION['message_type'] = "error";
+        header("Location: gere_users.php");
+        exit();
+    }
+    try {
+        if ($action === 'add') {
+            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $stmt = $cnx->prepare("INSERT INTO user (nom, mail, pass, role) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $username, $email, $password, $role);
+        } else {
+            $user_id = intval($_POST['user_id']);
+            if (!empty($_POST['password'])) {
+                $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                $stmt = $cnx->prepare("UPDATE user SET nom=?, mail=?, pass=?, role=? WHERE id=?");
+                $stmt->bind_param("ssssi", $username, $email, $password, $role, $user_id);
+            } else {
+                $stmt = $cnx->prepare("UPDATE user SET nom=?, mail=?, role=? WHERE id=?");
+                $stmt->bind_param("sssi", $username, $email, $role, $user_id);
+            }
+        }
+        if (!$stmt->execute()) {
+            throw new Exception("Erreur d'exécution : " . $stmt->error);
+        }
+        $_SESSION['message'] = ($action === 'add') 
+            ? "Utilisateur créé avec succès" 
+            : "Mise à jour réussie";
+        $_SESSION['message_type'] = "success";
+    } catch (Exception $e) {
+        $_SESSION['message'] = "Erreur : " . $e->getMessage();
+        $_SESSION['message_type'] = "error";
+    } finally {
+        if (isset($stmt)) $stmt->close();
+    }
+    header("Location: gere_users.php");
+    exit();
+}
 header("Location: gere_users.php");
 exit();
 ?>

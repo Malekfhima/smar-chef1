@@ -1,11 +1,8 @@
 <?php
-// php/afficher.php
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 include("cnx.php");
-
-// Vérifier si un ingrédient a été soumis
 if (!isset($_POST['nom']) || empty(trim($_POST['nom']))) {
     echo "<script>
         Swal.fire({
@@ -19,26 +16,19 @@ if (!isset($_POST['nom']) || empty(trim($_POST['nom']))) {
     </script>";
     exit();
 }
-
 $ingredient = trim($_POST['nom']);
-
 try {
-    // Préparer la requête pour chercher les recettes contenant l'ingrédient
     $query = "SELECT name, ingredients, preparation, image_path, preparation_time, cooking_time, servings 
               FROM recetts 
               WHERE ingredients LIKE ?";
     $stmt = $cnx->prepare($query);
-
     if (!$stmt) {
         throw new Exception("Erreur de préparation de la requête : " . $cnx->error);
     }
-
-    // Ajouter les wildcards pour la recherche partielle
     $search_term = "%" . $ingredient . "%";
     $stmt->bind_param("s", $search_term);
     $stmt->execute();
     $result = $stmt->get_result();
-
     if ($result->num_rows === 0) {
         echo "<script>
             Swal.fire({
@@ -52,12 +42,9 @@ try {
         </script>";
         exit();
     }
-
-    // Récupérer toutes les recettes
     $recipes = $result->fetch_all(MYSQLI_ASSOC);
     $stmt->close();
     $cnx->close();
-    
 } catch (Exception $e) {
     echo "<script>
         Swal.fire({
@@ -70,10 +57,8 @@ try {
     exit();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

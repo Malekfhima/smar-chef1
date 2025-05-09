@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,18 +22,15 @@
     align-items: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-
 .main-navigation ul {
     display: flex;
     gap: 1.5rem;
     margin: 0;
     padding: 0;
 }
-
 .main-navigation li {
     list-style: none;
 }
-
 .main-navigation a {
     color: #fff;
     font-family: 'Advent Pro', sans-serif;
@@ -46,12 +42,10 @@
     transition: all 0.3s ease;
     position: relative;
 }
-
 .main-navigation a:hover {
     color: #ffcc00;
     background-color: rgba(255, 255, 255, 0.1);
 }
-
 .main-navigation a::after {
     content: '';
     position: absolute;
@@ -63,7 +57,6 @@
     transition: all 0.3s ease;
     transform: translateX(-50%);
 }
-
 .main-navigation a:hover::after {
     width: 70%;
 }
@@ -72,7 +65,6 @@
     align-items: center;
     gap: 1.5rem;
 }
-
 .admin-nav span {
     color: #fff;
     font-family: 'Advent Pro', sans-serif;
@@ -87,7 +79,6 @@
     <?php session_start();?>
         <?php include 'nav.php'; ?>
         <div class="nav-links">
-            
         </div>
     </header>
     <section id="home">
@@ -107,7 +98,6 @@
         <form action="php/add.php" method="POST" enctype="multipart/form-data">
     <label for="recipe-name">Nom de la recette :</label>
     <input type="text" id="recipe-name" name="recipe-name" required>
-    
     <label for="recipe-category">Catégorie :</label>
     <select id="recipe-category" name="recipe-category" required>
         <option value="">-- Choisir une catégorie --</option>
@@ -116,49 +106,36 @@
         <option value="salades">Salades</option>
         <option value="gratins">Gratins</option>
     </select>
-    
     <label for="recipe-ingredients">Ingrédients :</label>
     <textarea id="recipe-ingredients" name="recipe-ingredients" required></textarea>
-    
     <label for="recipe-preparation">Préparation :</label>
     <textarea id="recipe-preparation" name="recipe-preparation" required></textarea>
-    
     <label for="preparation-time">Temps de préparation (en minutes) :</label>
     <input type="number" id="preparation-time" name="preparation-time" required>
-    
     <label for="cooking-time">Temps de cuisson (en minutes) :</label>
     <input type="number" id="cooking-time" name="cooking-time" required>
-    
     <label for="servings">Nombre de portions :</label>
     <input type="number" id="servings" name="servings" required>
-    
     <label for="recipe-image">Uploader une image :</label>
     <input type="file" id="recipe-image" name="recipe-image" accept="image/*" required>
-
     <label for="Nb">NB*</label>
     <input type="text" id="Nb" name="nb">
-    
     <button type="submit" class="btn">Ajouter la recette</button>
 </form>
     </section>
-
     <footer>
         <p>&copy; 2025 SmartChef. All rights reserved.</p>
     </footer>
     <script>
 /*document.querySelector('form').addEventListener('submit', async function(e) {
     e.preventDefault();
-    
     const formData = new FormData(this);
-    
     try {
         const response = await fetch('php/add.php', {
             method: 'POST',
             body: formData
         });
-        
         const result = await response.json();
-        
         if (result.status === 'success') {
             Swal.fire({
                 title: result.title,
@@ -189,5 +166,4 @@
 });*/
 </script>
 </body>
-
 </html>

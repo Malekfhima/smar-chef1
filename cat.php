@@ -2,12 +2,10 @@
 
 include("php/cnx.php");
 session_start();
-
 if (!isset($_POST['id'])) {
     header("Location: index1.php");
     exit();
 }
-
 $recipe_id = intval($_POST['id']);
 $query = "SELECT * FROM recetts WHERE id = ?";
 $stmt = $cnx->prepare($query);
@@ -15,13 +13,11 @@ $stmt->bind_param("i", $recipe_id);
 $stmt->execute();
 $recipe = $stmt->get_result()->fetch_assoc();
 $stmt->close();
-
 if (!$recipe) {
     header("Location: index1.php");
     exit();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -84,23 +80,18 @@ if (!$recipe) {
     </header>
     <div class="container">
         <a href="index1.php?category=<?= urlencode($recipe['cat']) ?>" class="back-link">← Retour aux recettes <?= htmlspecialchars($recipe['cat']) ?></a>
-        
         <h1><?= htmlspecialchars($recipe['name']) ?></h1>
-        
         <img src="<?= htmlspecialchars($recipe['image_path']) ?>" alt="<?= htmlspecialchars($recipe['name']) ?>" class="recipe-image">
-        
         <div class="recipe-meta">
             <span>Catégorie: <?= htmlspecialchars($recipe['cat']) ?></span>
             <span>Préparation: <?= $recipe['preparation_time'] ?> min</span>
             <span>Cuisson: <?= $recipe['cooking_time'] ?> min</span>
             <span>Portions: <?= $recipe['servings'] ?></span>
         </div>
-        
         <div class="recipe-section">
             <h2>Ingrédients</h2>
             <p><?= nl2br(htmlspecialchars($recipe['ingredients'])) ?></p>
         </div>
-        
         <div class="recipe-section">
             <h2>Préparation</h2>
             <p><?= nl2br(htmlspecialchars($recipe['preparation'])) ?></p>

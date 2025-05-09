@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,25 +8,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
             .main-navigation {
-    background-color: #0258A5;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #0258A5;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-
 .main-navigation ul {
     display: flex;
     gap: 1.5rem;
     margin: 0;
     padding: 0;
 }
-
 .main-navigation li {
     list-style: none;
 }
-
 .main-navigation a {
     color: #fff;
     font-family: 'Advent Pro', sans-serif;
@@ -41,12 +35,10 @@
     transition: all 0.3s ease;
     position: relative;
 }
-
 .main-navigation a:hover {
     color: #ffcc00;
     background-color: rgba(255, 255, 255, 0.1);
 }
-
 .main-navigation a::after {
     content: '';
     position: absolute;
@@ -58,7 +50,6 @@
     transition: all 0.3s ease;
     transform: translateX(-50%);
 }
-
 .main-navigation a:hover::after {
     width: 70%;
 }
@@ -99,23 +90,15 @@
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="about.html">Contact</a></li>
                     <li><a href="about.html">À propos</a></li>
-            <?php endif; ?>
-
-            <!-- Liens conditionnels -->
-            
+            <?php endif; ?>            
         </ul>
-
         <div class="admin-nav">
             <?php if(isset($_SESSION['id'])) : ?>
-                <!-- Affichage utilisateur connecté -->
                 <span class="user-status">
                     <i class="fas fa-user"></i>
                     <?= htmlspecialchars($_SESSION['nom']) ?>
                     <small>(<?= htmlspecialchars($_SESSION['role']) ?>)</small>
-                </span>
-                
-            <?php else : ?>
-              
+                </span>    
             <?php endif; ?>
         </div>
     </nav>
