@@ -185,7 +185,7 @@ if(!$result) {
         <?php else: ?>
             <div class="no-recipes">
                 <p>Aucune recette trouvée dans la base de données.</p>
-                <a href="add_recipe.php" class="action-btn edit-btn">Ajouter une recette</a>
+                <a href="main.php" class="action-btn edit-btn">Ajouter une recette</a>
             </div>
         <?php endif; ?>
     </div>
