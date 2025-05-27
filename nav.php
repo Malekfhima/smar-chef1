@@ -102,5 +102,7 @@
             <?php endif; ?>
         </div>
     </nav>
+
+    <?php include 'chatbot.php'; ?>
 </body>
 </html>
