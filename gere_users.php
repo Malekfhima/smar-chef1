@@ -11,13 +11,15 @@ include("php/cnx.php");
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Gestion Utilisateurs</title>
-    <link rel="stylesheet" href="css/gere.css">
-    <link rel="shortcut icon" href="images/logo.jpg">
+    <link rel="stylesheet" href="assets/css/gere.css">
+    <link rel="shortcut icon" href="assets/images/logo.jpg">
 </head>
+
 <body>
     <?php include('php/cnx.php')?>
     <nav style="margin-bottom:20px;">
@@ -98,61 +100,64 @@ include("php/cnx.php");
             </form>
         </div>
     </div>
-        <script>
-        function openModal(action, userId = null) {
-            const modal = document.getElementById('userModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const actionType = document.getElementById('actionType');
-            const passwordField = document.getElementById('password');
-            const passwordHelp = document.getElementById('passwordHelp');
-            if(action === 'add') {
-                modalTitle.textContent = 'Ajouter un utilisateur';
-                actionType.value = 'add';
-                document.getElementById('userForm').reset();
-                passwordField.required = true;
-                passwordHelp.textContent = '(Minimum 6 caractères)';
-            } else if(action === 'edit') {
-                modalTitle.textContent = 'Modifier l\'utilisateur';
-                actionType.value = 'edit';
-                passwordField.required = false;
-                passwordHelp.textContent = '(Laisser vide pour ne pas changer)';
-                fetch('php/get_user.php?id=' + userId)
-                    .then(response => {
-                        if(!response.ok) throw new Error('Erreur réseau');
-                        return response.json();
-                    })
-                    .then(data => {
-                        if(data.error) {
-                            alert(data.error);
-                            return;
-                        }
-                        document.getElementById('userId').value = data.id;
-                        document.getElementById('username').value = data.nom;
-                        document.getElementById('email').value = data.mail;
-                        document.getElementById('role').value = data.role;
-                    })
-                    .catch(error => {
-                        console.error('Erreur:', error);
-                        alert('Erreur lors du chargement des données utilisateur');
-                    });
-            }
-            modal.style.display = 'block';
+    <script>
+    function openModal(action, userId = null) {
+        const modal = document.getElementById('userModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const actionType = document.getElementById('actionType');
+        const passwordField = document.getElementById('password');
+        const passwordHelp = document.getElementById('passwordHelp');
+        if (action === 'add') {
+            modalTitle.textContent = 'Ajouter un utilisateur';
+            actionType.value = 'add';
+            document.getElementById('userForm').reset();
+            passwordField.required = true;
+            passwordHelp.textContent = '(Minimum 6 caractères)';
+        } else if (action === 'edit') {
+            modalTitle.textContent = 'Modifier l\'utilisateur';
+            actionType.value = 'edit';
+            passwordField.required = false;
+            passwordHelp.textContent = '(Laisser vide pour ne pas changer)';
+            fetch('php/get_user.php?id=' + userId)
+                .then(response => {
+                    if (!response.ok) throw new Error('Erreur réseau');
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.error) {
+                        alert(data.error);
+                        return;
+                    }
+                    document.getElementById('userId').value = data.id;
+                    document.getElementById('username').value = data.nom;
+                    document.getElementById('email').value = data.mail;
+                    document.getElementById('role').value = data.role;
+                })
+                .catch(error => {
+                    console.error('Erreur:', error);
+                    alert('Erreur lors du chargement des données utilisateur');
+                });
         }
-        function closeModal() {
-            document.getElementById('userModal').style.display = 'none';
+        modal.style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('userModal').style.display = 'none';
+    }
+
+    function confirmDelete(userId) {
+        if (confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ? Cette action est irréversible.')) {
+            window.location.href = 'manage_user.php?action=delete&id=' + userId;
         }
-        function confirmDelete(userId) {
-            if(confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ? Cette action est irréversible.')) {
-                window.location.href = 'manage_user.php?action=delete&id=' + userId;
-            }
+    }
+    window.onclick = function(event) {
+        const modal = document.getElementById('userModal');
+        if (event.target == modal) {
+            closeModal();
         }
-        window.onclick = function(event) {
-            const modal = document.getElementById('userModal');
-            if(event.target == modal) {
-                closeModal();
-            }
-        }
+    }
     </script>
     <footer><?php include('footer.php');?></footer>
 </body>
+
 </html>

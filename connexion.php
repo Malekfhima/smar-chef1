@@ -1,16 +1,46 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SmartChef - Inscription</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="shortcut icon" href="images/logo.jpg">
+    <link rel="shortcut icon" href="assets/images/logo.jpg">
 </head>
+
 <body>
+    <?php if (isset($_GET['success'])): ?>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Succès',
+                text: 'Connexion réussie !'
+            });
+        </script>
+    <?php elseif (isset($_GET['error'])): ?>
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: <?php
+                switch ($_GET['error']) {
+                    case 'invalid':
+                        echo "'Identifiants invalides.'";
+                        break;
+                    case 'empty':
+                        echo "'Veuillez remplir tous les champs.'";
+                        break;
+                    default:
+                        echo "'Une erreur est survenue.'";
+                }
+                ?>
+            });
+        </script>
+    <?php endif; ?>
     <header>
-        <?php 
+        <?php
         include("nav.php");
         ?>
     </header>
@@ -37,7 +67,8 @@
     <footer>
         <p>&copy; 2025 SmartChef. Tous droits réservés.</p>
     </footer>
-    <script src="js/afficher_pass.js"></script>
-    <script src="js/connexion.js"></script>
+    <script src="assets/js/afficher_pass.js"></script>
+    <script src="assets/js/connexion.js"></script>
 </body>
+
 </html>

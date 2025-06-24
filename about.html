@@ -1,160 +1,272 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="À propos de Smart Chef : découvrez notre équipe, nos valeurs et notre mission pour une cuisine intelligente et accessible à tous."
+    />
+    <meta
+      name="keywords"
+      content="smart chef, équipe, valeurs, mission, cuisine, innovation, accessibilité, diversité, produits frais"
+    />
     <title>À propos de nous</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/about.css">
-    <link rel="shortcut icon" href="images/logo.jpg">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">SMART CHEF</div>
-                <div class="hamburger" id="hamburger">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="about.html">À propos</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/about.css" />
+    <link rel="shortcut icon" href="assets/images/logo.jpg" />
+  </head>
+  <body>
+    <nav class="main-navigation" aria-label="Navigation principale">
+      <div class="logo">SMART CHEF</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="about.html" class="active">À propos</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="mes_favoris.php">Mes Favoris</a></li>
+      </ul>
+      <button
+        class="btn"
+        onclick="window.location.href='Connexion.php'"
+        aria-label="Connexion"
+      >
+        <i class="fas fa-user" aria-hidden="true"></i> Connexion
+      </button>
+      <button
+        class="hamburger"
+        aria-label="Ouvrir le menu"
+        aria-controls="nav-menu"
+        aria-expanded="false"
+        onclick="toggleMenu()"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <ul class="nav-links-mobile" id="nav-menu" hidden aria-label="Menu mobile">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="about.html" class="active">À propos</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="mes_favoris.php">Mes Favoris</a></li>
+      <li><a href="Connexion.php">Connexion</a></li>
+    </ul>
     <section class="hero">
-        <div class="container">
-            <h1>À propos de nous</h1>
-            <p>Découvrez notre histoire, notre mission et notre équipe dévouée qui travaille sans relâche pour vous offrir les meilleurs services.</p>
-        </div>
+      <div class="container">
+        <h1>À propos de nous</h1>
+        <p>
+          Découvrez notre histoire, notre mission et notre équipe dévouée qui
+          travaille sans relâche pour vous offrir les meilleurs services.
+        </p>
+      </div>
     </section>
     <section class="about-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Notre histoire</h2>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Smart Chef : Le génie de votre cuisine. Des algorithmes répondent à votre appétit : ingrédients aléatoires, envies folles et panique du « Qu'est-ce qu'on mange ce soir ?» se transforment en plats parfaits. Pas de recettes, juste une délicieuse rébellion.</p>
-                    <p>Bon Appétit.</p>
-                </div>
-                <div class="about-image">
-                    <img src="img/pizza.jpeg" alt="Notre équipe en réunion">
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-title">
+          <h2>Notre histoire</h2>
         </div>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              Smart Chef : Le génie de votre cuisine. Des algorithmes répondent
+              à votre appétit : ingrédients aléatoires, envies folles et panique
+              du « Qu'est-ce qu'on mange ce soir ?» se transforment en plats
+              parfaits. Pas de recettes, juste une délicieuse rébellion.
+            </p>
+            <p>Bon Appétit.</p>
+          </div>
+          <div class="about-image">
+            <img
+              src="img/pizza.jpeg"
+              alt="Photo d'une pizza, équipe Smart Chef"
+            />
+          </div>
+        </div>
+      </div>
     </section>
     <section class="team-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Notre équipe</h2>
-            </div>
-            <div class="team-members">
-                <div class="team-member">
-                    <img src="images/membrs/malek.jpg" alt="Membre de l'équipe" class="member-image">
-                    <div class="member-info">
-                        <h3>Malek Fhima</h3>
-                        <p>Developpeur</p>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <img src="images/membrs/rania.jpg" alt="Membre de l'équipe" class="member-image">
-                    <div class="member-info">
-                        <h3>Rania Bouasker</h3>
-                        <p>Product Owner</p>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <img src="images/membrs/yassmin.jpg" alt="Membre de l'équipe" class="member-image">
-                    <div class="member-info">
-                        <h3>Yassmine Arbi</h3>
-                        <p>Developpeur</p>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <img src="images/membrs/mow.jpg" alt="Membre de l'équipe" class="member-image">
-                    <div class="member-info">
-                        <h3>Maryem Babai</h3>
-                        <p>Scrum Master</p>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <img src="images/membrs/abdo.jpg" alt="Membre de l'équipe" class="member-image">
-                    <div class="member-info">
-                        <h3>Abdelkhalk Abid</h3>
-                        <p>Developpeur</p>
-                    </div>
-                </div>
-                <div class="team-member">
-                    <img src="images/membrs/rt3i.jpg" alt="Membre de l'équipe" class="member-image">
-                    <div class="member-info">
-                        <h3>Ahmed Yassine Rebai</h3>
-                        <p>Developpeur</p>
-                    </div>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-title">
+          <h2>Notre équipe</h2>
         </div>
+        <div class="team-members">
+          <div class="team-member">
+            <img
+              src="assets/images/membrs/malek.jpg"
+              alt="Portrait de Malek Fhima, développeur"
+              class="member-image"
+            />
+            <div class="member-info">
+              <h3>Malek Fhima</h3>
+              <p>Developpeur</p>
+            </div>
+          </div>
+          <div class="team-member">
+            <img
+              src="assets/images/membrs/rania.jpg"
+              alt="Portrait de Rania Bouasker, Product Owner"
+              class="member-image"
+            />
+            <div class="member-info">
+              <h3>Rania Bouasker</h3>
+              <p>Product Owner</p>
+            </div>
+          </div>
+          <div class="team-member">
+            <img
+              src="assets/images/membrs/yassmin.jpg"
+              alt="Portrait de Yassmine Arbi, développeur"
+              class="member-image"
+            />
+            <div class="member-info">
+              <h3>Yassmine Arbi</h3>
+              <p>Developpeur</p>
+            </div>
+          </div>
+          <div class="team-member">
+            <img
+              src="assets/images/membrs/mow.jpg"
+              alt="Portrait de Maryem Babai, Scrum Master"
+              class="member-image"
+            />
+            <div class="member-info">
+              <h3>Maryem Babai</h3>
+              <p>Scrum Master</p>
+            </div>
+          </div>
+          <div class="team-member">
+            <img
+              src="assets/images/membrs/abdo.jpg"
+              alt="Portrait de Abdelkhalk Abid, développeur"
+              class="member-image"
+            />
+            <div class="member-info">
+              <h3>Abdelkhalk Abid</h3>
+              <p>Developpeur</p>
+            </div>
+          </div>
+          <div class="team-member">
+            <img
+              src="assets/images/membrs/rt3i.jpg"
+              alt="Portrait de Ahmed Yassine Rebai, développeur"
+              class="member-image"
+            />
+            <div class="member-info">
+              <h3>Ahmed Yassine Rebai</h3>
+              <p>Developpeur</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-        <section class="section values-section">
-            <div class="container">
-                <h2>Nos valeurs culinaires</h2>
-                <div class="values-grid">
-                    <div class="value-card">
-                        <div class="value-icon">🍅</div>
-                        <h3>Produits frais</h3>
-                        <p>Nous privilégions les ingrédients de saison, locaux et de qualité pour des recettes savoureuses et respectueuses de l'environnement.</p>
-                    </div>
-                    <div class="value-card">
-                        <div class="value-icon">👩‍🍳</div>
-                        <h3>Accessibilité</h3>
-                        <p>Nos recettes sont conçues pour tous les niveaux, des débutants aux chefs confirmés, avec des instructions claires et précises.</p>
-                    </div>
-                    <div class="value-card">
-                        <div class="value-icon">🌍</div>
-                        <h3>Diversité</h3>
-                        <p>Nous célébrons les cuisines du monde entier, vous permettant de voyager à travers les saveurs sans quitter votre cuisine.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>SMART CHEF</h3>
-                    <p>Nous engageons à fournir des services exceptionnels et à créer des relations durables avec nos clients.</p>
-                </div>
-                <div class="footer-column">
-                    <h3>Liens rapides</h3>
-                    <ul>
-                        <li><a href="index.html">Accueil</a></li>
-                        <li><a href="about.html">À propos</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Contact</h3>
-                    <ul>
-                        <li>  123 Rue Example, Ville</li>
-                        <li><a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=CllgCJNstdJvPHwCJzWktkWphDjFDBcFHxXxWQSVwdRSFDWQnLtSVDWmSbCxdqFQbwZRtblTxBB" style="color: white;">SmartChef@gmail.com</a></li>
-                        <li>+216 99 999 999</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 Smart Chef. Tous droits réservés.</p>
-            </div>
+    <section class="section values-section">
+      <div class="container">
+        <h2>Nos valeurs culinaires</h2>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">🍅</div>
+            <h3>Produits frais</h3>
+            <p>
+              Nous privilégions les ingrédients de saison, locaux et de qualité
+              pour des recettes savoureuses et respectueuses de l'environnement.
+            </p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">👩‍🍳</div>
+            <h3>Accessibilité</h3>
+            <p>
+              Nos recettes sont conçues pour tous les niveaux, des débutants aux
+              chefs confirmés, avec des instructions claires et précises.
+            </p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🌍</div>
+            <h3>Diversité</h3>
+            <p>
+              Nous célébrons les cuisines du monde entier, vous permettant de
+              voyager à travers les saveurs sans quitter votre cuisine.
+            </p>
+          </div>
         </div>
+      </div>
+    </section>
+    <footer id="contact" aria-label="Pied de page">
+      <div class="footer-logo">
+        <i class="icofont-chef" aria-hidden="true"></i> Smart Chef
+      </div>
+      <div class="footer-links">
+        <a href="#">Mentions légales</a> |
+        <a href="#">Politique de confidentialité</a> |
+        <a href="#">Contact</a>
+      </div>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Pinterest"
+          ><i class="fab fa-pinterest-p"></i
+        ></a>
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+      <p>
+        L'assistant culinaire intelligent qui révolutionne votre façon de
+        cuisiner
+      </p>
+      <div class="copyright">&copy; 2025 Smart Chef. Tous droits réservés.</div>
     </footer>
-</body>
-<script>
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        hamburger.classList.toggle('active');
-    });
-</script>
+    <div
+      id="cookie-banner"
+      style="
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #222;
+        color: #fff;
+        padding: 1em;
+        text-align: center;
+        z-index: 9999;
+        display: none;
+      "
+    >
+      Ce site utilise des cookies pour améliorer votre expérience.
+      <a
+        href="politique_confidentialite.html"
+        style="color: #fab800; text-decoration: underline"
+        >En savoir plus</a
+      >.
+      <button onclick="acceptCookies()" style="margin-left: 1em" class="btn">
+        Accepter
+      </button>
+      <button
+        onclick="refuseCookies()"
+        style="margin-left: 0.5em; background: #e74c3c"
+        class="btn"
+      >
+        Refuser
+      </button>
+    </div>
+    <script>
+      function toggleMenu() {
+        const nav = document.getElementById("nav-menu");
+        const btn = document.querySelector(".hamburger");
+        const expanded = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", !expanded);
+        nav.hidden = expanded;
+      }
+      function acceptCookies() {
+        localStorage.setItem("cookiesAccepted", "1");
+        document.getElementById("cookie-banner").style.display = "none";
+      }
+      function refuseCookies() {
+        localStorage.setItem("cookiesAccepted", "0");
+        document.getElementById("cookie-banner").style.display = "none";
+      }
+      window.onload = function () {
+        if (localStorage.getItem("cookiesAccepted") === null) {
+          document.getElementById("cookie-banner").style.display = "block";
+        }
+      };
+    </script>
+  </body>
 </html>

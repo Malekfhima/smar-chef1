@@ -3,6 +3,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 include("cnx.php");
+session_start();
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    die('Accès refusé : seuls les administrateurs peuvent modifier ou supprimer des recettes.');
+}
 if (!isset($_POST['nom']) || empty(trim($_POST['nom']))) {
     echo "<script>
         Swal.fire({
@@ -49,7 +53,7 @@ try {
     echo "<script>
         Swal.fire({
             title: 'Erreur',
-            text: '".addslashes($e->getMessage())."',
+            text: '" . addslashes($e->getMessage()) . "',
             icon: 'error',
             confirmButtonText: 'OK'
         });
@@ -59,6 +63,7 @@ try {
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -75,10 +80,10 @@ try {
         }
     </style>
 </head>
+
 <body>
     <header>
-    <?php
-        session_start();
+        <?php
         include("../nav.php");
         ?>
     </header>
@@ -90,14 +95,17 @@ try {
             <div class="recipe-card">
                 <div class="recipe-header">
                     <h2><?php echo htmlspecialchars($recipe['name']); ?></h2>
-                    <img src="<?php echo htmlspecialchars($recipe['image_path']); ?>" 
-                         alt="<?php echo htmlspecialchars($recipe['name']); ?>" style="height: 500px;">
+                    <img src="<?php echo htmlspecialchars($recipe['image_path']); ?>"
+                        alt="<?php echo htmlspecialchars($recipe['name']); ?>" style="height: 500px;">
                 </div>
                 <div class="recipe-details">
                     <h3>Details</h3>
-                    <p><strong>Temps de préparation :</strong> <?php echo htmlspecialchars($recipe['preparation_time']); ?> Minutes.</p>
-                    <p><strong>Temps de cuisson :</strong> <?php echo htmlspecialchars($recipe['cooking_time']); ?> Minutes.</p>
-                    <p><strong>Nombre de portions :</strong> <?php echo htmlspecialchars($recipe['servings']); ?> Portions.</p>
+                    <p><strong>Temps de préparation :</strong> <?php echo htmlspecialchars($recipe['preparation_time']); ?>
+                        Minutes.</p>
+                    <p><strong>Temps de cuisson :</strong> <?php echo htmlspecialchars($recipe['cooking_time']); ?> Minutes.
+                    </p>
+                    <p><strong>Nombre de portions :</strong> <?php echo htmlspecialchars($recipe['servings']); ?> Portions.
+                    </p>
                 </div>
                 <div class="recipe-content">
                     <div class="ingredients">
@@ -107,8 +115,8 @@ try {
                             $ingredients = explode("\n", $recipe['ingredients']);
                             foreach ($ingredients as $ing) {
                                 $highlighted = preg_replace(
-                                    "/(" . preg_quote($ingredient, '/') . ")/i", 
-                                    '<span class="highlight">$1</span>', 
+                                    "/(" . preg_quote($ingredient, '/') . ")/i",
+                                    '<span class="highlight">$1</span>',
                                     htmlspecialchars(trim($ing))
                                 );
                                 echo "<li>" . $highlighted . "</li>";
@@ -135,4 +143,5 @@ try {
         <p>&copy; 2025 SmartChef. All rights reserved.</p>
     </footer>
 </body>
+
 </html>

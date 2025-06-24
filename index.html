@@ -1,79 +1,216 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Smart Chef : trouvez des recettes personnalisées selon vos goûts, vos ingrédients et vos objectifs nutritionnels."
+    />
+    <meta
+      name="keywords"
+      content="recette, cuisine, smart chef, ingrédients, nutrition, menu, personnalisé, facile, rapide, avis, favoris"
+    />
     <title>Smart Chef - Votre compagnon culinaire intelligent</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/icofont@1.0.1/icofont.min.css">
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="shortcut icon" href="images/logo.jpg">
-</head>
-<body>
-    <nav>
-        <div class="logo">
-            <i class="icofont-chef"></i>
-            <span>Smart Chef</span>
-        </div>  
-        <ul class="nav-links">
-            <li><a href="index.html" class="active">Accueil</a></li>
-            <li><a href="about.html">À propos</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <button class="btn" onclick="window.location.href='Connexion.php'">
-            <i class="fas fa-user"></i> Connexion
-        </button>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/icofont@1.0.1/icofont.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/home.css" />
+    <link rel="shortcut icon" href="assets/images/logo.jpg" />
+  </head>
+  <body>
+    <nav aria-label="Navigation principale">
+      <div class="logo">
+        <i class="icofont-chef" aria-hidden="true"></i>
+        <span>Smart Chef</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Accueil</a></li>
+        <li><a href="about.html">À propos</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="mes_favoris.php">Mes Favoris</a></li>
+      </ul>
+      <button
+        class="btn"
+        onclick="window.location.href='Connexion.php'"
+        aria-label="Connexion"
+      >
+        <i class="fas fa-user" aria-hidden="true"></i> Connexion
+      </button>
+      <button
+        class="hamburger"
+        aria-label="Ouvrir le menu"
+        aria-controls="nav-menu"
+        aria-expanded="false"
+        onclick="toggleMenu()"
+      >
+        <span></span><span></span><span></span>
+      </button>
     </nav>
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Bienvenue sur <span>Smart Chef</span></h1>
-            <p>Découvrez une nouvelle façon de cuisiner avec notre assistant culinaire intelligent. Smart Chef vous propose des recettes personnalisées selon vos goûts, votre frigo et vos objectifs nutritionnels.</p>
-            
-        </div>
-        <div class="hero-img">
-            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Cuisine intelligente">
-        </div>
+    <ul class="nav-links-mobile" id="nav-menu" hidden aria-label="Menu mobile">
+      <li><a href="index.html" class="active">Accueil</a></li>
+      <li><a href="about.html">À propos</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="mes_favoris.php">Mes Favoris</a></li>
+      <li><a href="Connexion.php">Connexion</a></li>
+    </ul>
+    <script>
+      function toggleMenu() {
+        const nav = document.getElementById("nav-menu");
+        const btn = document.querySelector(".hamburger");
+        const expanded = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", !expanded);
+        nav.hidden = expanded;
+      }
+    </script>
+    <section class="hero" aria-label="Présentation Smart Chef">
+      <div class="hero-content">
+        <h1>Bienvenue sur <span>Smart Chef</span></h1>
+        <p>
+          Découvrez une nouvelle façon de cuisiner avec notre assistant
+          culinaire intelligent. Smart Chef vous propose des recettes
+          personnalisées selon vos goûts, votre frigo et vos objectifs
+          nutritionnels.
+        </p>
+      </div>
+      <div class="hero-img">
+        <img
+          src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+          alt="Photo d'un plat cuisiné moderne, cuisine intelligente"
+        />
+      </div>
     </section>
-    <section class="features">
-        <h2 class="section-title">Pourquoi choisir Smart Chef ?</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <h3>Intelligence Artificielle</h3>
-                <p>Notre algorithme apprend vos préférences et suggère des recettes adaptées à vos goûts et à ce que vous avez dans votre frigo.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-heartbeat"></i>
-                </div>
-                <h3>Nutrition intelligente</h3>
-                <p>Des recettes équilibrées selon vos objectifs (perte de poids, musculation, régime spécifique, etc.).</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i class="fas fa-clock"></i>
-                </div>
-                <h3>Gain de temps</h3>
-                <p>Plus besoin de chercher des idées de repas, Smart Chef génère votre menu de la semaine en 2 clics.</p>
-            </div>
+    <section class="features" aria-label="Pourquoi choisir Smart Chef ?">
+      <h2 class="section-title">Pourquoi choisir Smart Chef ?</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3>Intelligence Artificielle</h3>
+          <p>
+            Notre algorithme apprend vos préférences et suggère des recettes
+            adaptées à vos goûts et à ce que vous avez dans votre frigo.
+          </p>
         </div>
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <i class="fas fa-heartbeat"></i>
+          </div>
+          <h3>Nutrition intelligente</h3>
+          <p>
+            Des recettes équilibrées selon vos objectifs (perte de poids,
+            musculation, régime spécifique, etc.).
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">
+            <i class="fas fa-clock"></i>
+          </div>
+          <h3>Gain de temps</h3>
+          <p>
+            Plus besoin de chercher des idées de repas, Smart Chef génère votre
+            menu de la semaine en 2 clics.
+          </p>
+        </div>
+      </div>
     </section>
-    <footer id="contact">
-        <div class="footer-logo">
-            <i class="icofont-chef"></i> Smart Chef
+    <section
+      class="suggestions"
+      aria-label="Suggestions personnalisées"
+      style="background: #fff9e6; padding: 2em 0"
+    >
+      <div class="container">
+        <h2 class="section-title">Suggestions pour vous</h2>
+        <div id="suggestions-list">
+          <p>Chargement des suggestions...</p>
         </div>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-pinterest-p"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-        </div>
-        <p>L'assistant culinaire intelligent qui révolutionne votre façon de cuisiner</p>
-        <div class="copyright">
-            &copy; 2025 Smart Chef. Tous droits réservés.
-        </div>
+      </div>
+    </section>
+    <footer id="contact" aria-label="Pied de page">
+      <div class="footer-logo">
+        <i class="icofont-chef" aria-hidden="true"></i> Smart Chef
+      </div>
+      <div class="footer-links">
+        <a href="#">Mentions légales</a> |
+        <a href="politique_confidentialite.html"
+          >Politique de confidentialité</a
+        >
+        |
+        <a href="#">Contact</a>
+      </div>
+      <div class="social-links" aria-label="Réseaux sociaux">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Pinterest"
+          ><i class="fab fa-pinterest-p"></i
+        ></a>
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+      <p>
+        L'assistant culinaire intelligent qui révolutionne votre façon de
+        cuisiner
+      </p>
+      <div class="copyright">&copy; 2025 Smart Chef. Tous droits réservés.</div>
     </footer>
-</body>
+    <div
+      id="cookie-banner"
+      style="
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #222;
+        color: #fff;
+        padding: 1em;
+        text-align: center;
+        z-index: 9999;
+        display: none;
+      "
+    >
+      Ce site utilise des cookies pour améliorer votre expérience.
+      <a
+        href="politique_confidentialite.html"
+        style="color: #fab800; text-decoration: underline"
+        >En savoir plus</a
+      >.
+      <button onclick="acceptCookies()" style="margin-left: 1em" class="btn">
+        Accepter
+      </button>
+      <button
+        onclick="refuseCookies()"
+        style="margin-left: 0.5em; background: #e74c3c"
+        class="btn"
+      >
+        Refuser
+      </button>
+    </div>
+    <script>
+      function acceptCookies() {
+        localStorage.setItem("cookiesAccepted", "1");
+        document.getElementById("cookie-banner").style.display = "none";
+      }
+      function refuseCookies() {
+        localStorage.setItem("cookiesAccepted", "0");
+        document.getElementById("cookie-banner").style.display = "none";
+      }
+      window.onload = function () {
+        if (localStorage.getItem("cookiesAccepted") === null) {
+          document.getElementById("cookie-banner").style.display = "block";
+        }
+      };
+    </script>
+    <script>
+      fetch("php/suggestions.php")
+        .then((r) => r.text())
+        .then((html) => {
+          document.getElementById("suggestions-list").innerHTML = html;
+        });
+    </script>
+  </body>
 </html>

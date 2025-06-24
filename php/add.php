@@ -4,12 +4,16 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 include("cnx.php");
 session_start();
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    die('Accès refusé : seuls les administrateurs peuvent ajouter des recettes.');
+}
 if (!isset($_SESSION['id'])) {
     echo "<script>alert('Erreur : Utilisateur non connecté.'); window.history.back();</script>";
     exit();
 }
 $user_id = $_SESSION['id'];
-if (!isset(
+if (
+    !isset(
     $_POST['recipe-name'],
     $_POST['recipe-category'],
     $_POST['recipe-ingredients'],
@@ -18,7 +22,8 @@ if (!isset(
     $_POST['cooking-time'],
     $_POST['servings'],
     $_FILES['recipe-image']
-)) {
+)
+) {
     echo "<script>alert('Erreur : Tous les champs du formulaire doivent être remplis.'); window.history.back();</script>";
     exit();
 }
@@ -29,7 +34,7 @@ $recipe_preparation = $_POST['recipe-preparation'];
 $preparation_time = intval($_POST['preparation-time']);
 $cooking_time = intval($_POST['cooking-time']);
 $servings = intval($_POST['servings']);
-$nb=$_POST['nb'];
+$nb = $_POST['nb'];
 $check_stmt = $cnx->prepare("SELECT id FROM recetts WHERE name = ? AND user_id = ?");
 $check_stmt->bind_param("si", $recipe_name, $user_id);
 $check_stmt->execute();
@@ -74,7 +79,7 @@ if (move_uploaded_file($_FILES["recipe-image"]["tmp_name"], $target_file)) {
         echo "<script>alert('Erreur de préparation de la requête : " . $cnx->error . "'); window.history.back();</script>";
         exit();
     }
-    $stmt->bind_param("ssssiiisss", $recipe_name, $recipe_cat, $recipe_ingredients, $recipe_preparation, $preparation_time, $cooking_time, $servings, $target_file, $user_id,$nb);
+    $stmt->bind_param("ssssiiisss", $recipe_name, $recipe_cat, $recipe_ingredients, $recipe_preparation, $preparation_time, $cooking_time, $servings, $target_file, $user_id, $nb);
     if ($stmt->execute()) {
         echo "<script>alert('Recette ajoutée avec succès !'); window.location.href = '../main.php';</script>";
     } else {

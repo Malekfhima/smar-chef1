@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <title>Fondant au chocolat</title>
     <link rel="shortcut icon" href="images/logo.jpg">
 </head>
+
 <body>
     <header>
         <?php
@@ -25,7 +27,7 @@
             <div class="recipe-details">
                 <h3>Details</h3>
                 <p><strong>Temps de préparation :</strong> 20 minutes (+ 2h30 de levée)</p>
-                <p><strong>Temps de cuisson :</strong> 25 à 30 minutes</p> 
+                <p><strong>Temps de cuisson :</strong> 25 à 30 minutes</p>
                 <p><strong>Nombre de portions :</strong> 1 grande brioche (environ 8 parts)</p>
             </div>
             <div class="recipe-content">
@@ -52,11 +54,13 @@
                             <ul>Dans un robot pétrin (ou à la main), mélangez la farine, le sucre et le sel.</ul>
                             <ul>Ajoutez les 5 œufs un à un, puis la levure.</ul>
                             <ul>Pétrissez 10 min jusqu’à obtenir une pâte homogène et élastique.</ul>
-                            <ul>Incorporez le beurre mou coupé en morceaux petit à petit. Pétrissez encore 10 min jusqu’à ce que la pâte se décolle des parois.</ul>
+                            <ul>Incorporez le beurre mou coupé en morceaux petit à petit. Pétrissez encore 10 min
+                                jusqu’à ce que la pâte se décolle des parois.</ul>
                         </li>
                         <li>
                             <strong>2. Pointage (1re levée) :</strong>
-                            <ul>Couvrez la pâte d’un torchon et laissez lever 1h30 à 2h dans un endroit tiède (elle doit doubler de volume).</ul>
+                            <ul>Couvrez la pâte d’un torchon et laissez lever 1h30 à 2h dans un endroit tiède (elle doit
+                                doubler de volume).</ul>
                         </li>
                         <li>
                             <strong>3. Façonnage :</strong>
@@ -72,7 +76,7 @@
                         </li>
                         <li>
                             <strong>5. Démoulage :</strong>
-                            <ul>Sortez la brioche du four et laissez tiédir avant de démouler.</ul>
+                            <ul>Sortez la brioche du four et laissez tiédir ava nt de démouler.</ul>
                         </li>
                     </ol>
                 </div>
@@ -81,5 +85,5 @@
     </section>
     <footer>© 2025 SmartChef. All rights reserved.</footer>
 </body>
-</html>
 
+</html>
